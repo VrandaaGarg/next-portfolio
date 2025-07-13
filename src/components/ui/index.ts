@@ -6,3 +6,4 @@ export { default as SkillCard } from "./SkillCard";
 export { default as SkillCategory } from "./SkillCategory";
 export { TypewriterEffect } from "./typewriter-effect";
 export { BorderBeam } from "./animated-border-beam";
+export { ShineBorder } from "./shine-border";
