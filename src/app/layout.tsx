@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import AnimatedBackground from "@/components/animations/AnimatedBackground";
 import AnimatedCursor from "@/components/animations/AnimatedCursor";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,12 @@ export default function RootLayout({
           <Navbar />
           {children}
         </div>
+
+        <Script
+          defer
+          src="https://stats.ayush-sharma.in/script.js"
+          data-website-id="2f059d1b-0567-4314-960f-1dcc56c8eb19"
+        />
       </body>
     </html>
   );
