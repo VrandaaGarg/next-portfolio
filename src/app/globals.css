@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  /* Custom color palette based on the image - Pink/Magenta theme */
+  --primary-pink: #fa0f69;
+  --secondary-pink: #ff1b6b;
+  --accent-pink: #ff4081;
+  --light-pink: #ffb3d1;
+  --dark-bg: #000000;
+  --darker-bg: #0a0a0a;
+  --card-bg: #18181a;
+  --border-color: #27272a;
+
+  /* Text colors */
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  /* Gradient colors - Pink variations only */
+  --gradient-primary: linear-gradient(135deg, #fa0f69 0%, #ff1b6b 100%);
+  --gradient-secondary: linear-gradient(135deg, #c11853 0%, #d44575 100%);
+  --gradient-accent: linear-gradient(
+    135deg,
+    #fa0f69 0%,
+    #ff4081 50%,
+    #ff1b6b 100%
+  );
+
+  /* Additional utility colors */
+  --success: #10b981;
+  --warning: #f59e0b;
+  --error: #ef4444;
 }
 
 @theme inline {
@@ -10,17 +40,189 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Custom color extensions */
+  --color-primary-pink: var(--primary-pink);
+  --color-secondary-pink: var(--secondary-pink);
+  --color-accent-pink: var(--accent-pink);
+  --color-light-pink: var(--light-pink);
+  --color-dark-bg: var(--dark-bg);
+  --color-darker-bg: var(--darker-bg);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border-color);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--darker-bg);
+  color: var(--text-primary);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--darker-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-pink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-pink);
+}
+
+/* Custom utility classes */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-secondary {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect for cards */
+.glass-effect {
+  background: rgba(24, 24, 26, 0.7);
+  backdrop-filter: blur(10px);
+}
+
+/* Glass effect with default border for components that need it */
+.glass-effect-with-border {
+  background: rgba(24, 24, 26, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Hover effects */
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(250, 15, 105, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Animation keyframes */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(250, 15, 105, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(250, 15, 105, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Utility animation classes */
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(250, 15, 105, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Scroll-based animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Page transitions */
+.page-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Interactive elements */
+button,
+a,
+[role="button"] {
+  transition: all 0.2s ease;
+}
+
+button:hover,
+a:hover,
+[role="button"]:hover {
+  transform: translateY(-2px);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(250, 15, 105, 0.3);
+  color: white;
 }
