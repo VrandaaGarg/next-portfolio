@@ -87,7 +87,7 @@ export default function Hero() {
             </motion.h1>
 
             {/* Role */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
@@ -105,7 +105,7 @@ export default function Hero() {
                 deletingSpeed={80}
                 delayBetweenRoles={2500}
               />
-            </motion.p>
+            </motion.div>
 
             {/* Description */}
             <motion.p

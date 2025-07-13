@@ -35,7 +35,7 @@ export default function AnimatedBackground({
       <div className="absolute inset-0 bg-gradient-to-br from-[#fa0f69]/10 via-transparent to-[#ff1b6b]/20" />
 
       {/* Animated floating particles */}
-      <div className="absolute inset-0 z-1">
+      <div className="absolute inset-0 z-10">
         {[...Array(particleCount)].map((_, i) => (
           <motion.div
             key={i}
@@ -63,7 +63,7 @@ export default function AnimatedBackground({
       </div>
 
       {/* Medium particles with different color */}
-      <div className="absolute inset-0 z-1">
+      <div className="absolute inset-0 z-10">
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={`medium-${i}`}
@@ -91,7 +91,7 @@ export default function AnimatedBackground({
       </div>
 
       {/* Larger floating orbs */}
-      <div className="absolute inset-0 z-1">
+      <div className="absolute inset-0 z-10">
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={`orb-${i}`}
@@ -120,7 +120,7 @@ export default function AnimatedBackground({
 
       {/* Subtle grid pattern */}
       <div
-        className="absolute inset-0 opacity-30 z-1"
+        className="absolute inset-0 opacity-30 z-10"
         style={{
           backgroundImage: `
             linear-gradient(rgba(250, 15, 105, 0.3) 1px, transparent 1px),

@@ -416,7 +416,7 @@ export default function GitHubSection() {
 
                     <div className="aspect-auto">
                       <Image
-                        src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400`}
+                        src="https://github-readme-stats.vercel.app/api?username=vrandaagarg&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400"
                         className="w-full h-auto rounded-2xl"
                         loading="lazy"
                         alt="GitHub Stats"
