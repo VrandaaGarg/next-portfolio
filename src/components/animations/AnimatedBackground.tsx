@@ -120,7 +120,7 @@ export default function AnimatedBackground({
 
       {/* Subtle grid pattern */}
       <div
-        className="absolute inset-0 opacity-15 z-1"
+        className="absolute inset-0 opacity-30 z-1"
         style={{
           backgroundImage: `
             linear-gradient(rgba(250, 15, 105, 0.3) 1px, transparent 1px),

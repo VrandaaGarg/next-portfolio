@@ -56,7 +56,7 @@ export default function Hero() {
     <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden">
       {/* Background gradient overlay */}
 
-      <div className="relative z-30 container mx-auto max-w-6xl px-4 pt-20 md:px-10 flex items-center">
+      <div className="relative z-30 container mx-auto max-w-6xl px-4 pt-20 md:px-10 flex min-h-screen items-center">
         <div className="grid lg:grid-cols-2 gap-5 items-center w-full">
           {/* Left side - Text content */}
           <motion.div

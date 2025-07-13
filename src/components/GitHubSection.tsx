@@ -421,9 +421,6 @@ export default function GitHubSection() {
                   {contributionStats.totalContributions} contributions in the
                   last year
                 </p>
-                <p className="text-xs text-neutral-500 mt-1">
-                  Real GitHub contribution data via GraphQL API
-                </p>
               </motion.div>
 
               <motion.div
