@@ -226,3 +226,96 @@ a:hover,
   background: rgba(250, 15, 105, 0.3);
   color: white;
 }
+
+/* Custom styles for GitHub calendar heatmap */
+.react-calendar-heatmap {
+  font-family: inherit;
+}
+
+.react-calendar-heatmap rect {
+  shape-rendering: crispEdges;
+}
+
+.react-calendar-heatmap .color-empty {
+  fill: #161b22;
+  stroke: #0a0a0a;
+  stroke-width: 2px;
+  rx: 3;
+  ry: 3;
+}
+
+.react-calendar-heatmap .color-scale-1 {
+  fill: #fa0f69;
+  opacity: 0.3;
+  stroke: #0a0a0a;
+  stroke-width: 2px;
+  rx: 3;
+  ry: 3;
+}
+
+.react-calendar-heatmap .color-scale-2 {
+  fill: #fa0f69;
+  opacity: 0.5;
+  stroke: #0a0a0a;
+  stroke-width: 2px;
+  rx: 3;
+  ry: 3;
+}
+
+.react-calendar-heatmap .color-scale-3 {
+  fill: #fa0f69;
+  opacity: 0.7;
+  stroke: #0a0a0a;
+  stroke-width: 2px;
+  rx: 3;
+  ry: 3;
+}
+
+.react-calendar-heatmap .color-scale-4 {
+  fill: #fa0f69;
+  opacity: 1;
+  stroke: #0a0a0a;
+  stroke-width: 2px;
+  rx: 3;
+  ry: 3;
+}
+
+.react-calendar-heatmap text {
+  fill: #8b949e;
+  font-size: 10px;
+  font-family: inherit;
+}
+
+.react-calendar-heatmap .month-label {
+  font-size: 11px;
+  fill: #f0f6fc;
+  font-weight: 500;
+}
+
+.react-calendar-heatmap .wday-label {
+  font-size: 9px;
+  fill: #7d8590;
+  font-weight: 400;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: #fa0f69;
+  stroke-width: 3px;
+  filter: brightness(1.2);
+  transition: all 0.2s ease;
+}
+
+/* Responsive adjustments for heatmap */
+@media (max-width: 768px) {
+  .react-calendar-heatmap text {
+    font-size: 8px;
+  }
+
+  .react-calendar-heatmap .month-label {
+    font-size: 9px;
+  }
+
+  .react-calendar-heatmap .wday-label {
+    font-size: 7px;
+  }
+}

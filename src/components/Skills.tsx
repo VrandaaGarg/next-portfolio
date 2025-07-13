@@ -84,8 +84,8 @@ const categoryVariants = {
 
 export default function Skills() {
   return (
-    <section className="min-h-screen bg-[#0a0a0a]/80 relative py-20 px-4">
-      <div className="container mx-auto max-w-7xl">
+    <section className="min-h-screen bg-[#0a0a0a]/40 relative py-20 px-4">
+      <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

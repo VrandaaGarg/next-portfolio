@@ -32,14 +32,14 @@ export default function AnimatedBackground({
       className={`fixed inset-0 pointer-events-none overflow-hidden z-0 ${className}`}
     >
       {/* Background gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#fa0f69]/20 via-transparent to-[#ff1b6b]/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#fa0f69]/10 via-transparent to-[#ff1b6b]/20" />
 
       {/* Animated floating particles */}
       <div className="absolute inset-0 z-1">
         {[...Array(particleCount)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute rounded-full bg-[#fa0f69] opacity-60"
+            className="absolute rounded-full bg-[#fa0f69]/50 opacity-30"
             style={{
               width: Math.random() * 6 + 2 + "px",
               height: Math.random() * 6 + 2 + "px",
@@ -67,7 +67,7 @@ export default function AnimatedBackground({
         {[...Array(15)].map((_, i) => (
           <motion.div
             key={`medium-${i}`}
-            className="absolute rounded-full bg-[#ff1b6b] opacity-40"
+            className="absolute rounded-full bg-[#ff1b6b]/50 opacity-40"
             style={{
               width: Math.random() * 8 + 4 + "px",
               height: Math.random() * 8 + 4 + "px",
@@ -95,7 +95,7 @@ export default function AnimatedBackground({
         {[...Array(5)].map((_, i) => (
           <motion.div
             key={`orb-${i}`}
-            className="absolute rounded-full bg-gradient-to-r from-[#fa0f69]/20 to-[#ff1b6b]/20 blur-xl"
+            className="absolute rounded-full bg-gradient-to-r from-[#fa0f69]/10 to-[#ff1b6b]/10 blur-xl"
             style={{
               width: Math.random() * 200 + 100 + "px",
               height: Math.random() * 200 + 100 + "px",
@@ -120,7 +120,7 @@ export default function AnimatedBackground({
 
       {/* Subtle grid pattern */}
       <div
-        className="absolute inset-0 opacity-10 z-1"
+        className="absolute inset-0 opacity-15 z-1"
         style={{
           backgroundImage: `
             linear-gradient(rgba(250, 15, 105, 0.3) 1px, transparent 1px),

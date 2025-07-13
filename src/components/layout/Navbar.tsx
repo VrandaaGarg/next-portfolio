@@ -39,7 +39,7 @@ export default function Navbar() {
         }`}
         animate={{
           width: isScrolled ? "90vw" : "95vw",
-          maxWidth: isScrolled ? "800px" : "1200px",
+          maxWidth: isScrolled ? "900px" : "1200px",
           paddingLeft: isScrolled ? "0.5rem" : "1rem",
           paddingRight: isScrolled ? "0.5rem" : "1rem",
           paddingTop: isScrolled ? "0.05rem" : "0.2rem",

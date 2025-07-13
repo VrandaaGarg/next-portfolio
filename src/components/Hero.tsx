@@ -53,10 +53,10 @@ export default function Hero() {
   ];
 
   return (
-    <section className="min-h-screen bg-[#0a0a0a]/80 relative overflow-hidden">
+    <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden">
       {/* Background gradient overlay */}
 
-      <div className="relative z-30 container mx-auto px-4 md:px-10 h-screen flex items-center">
+      <div className="relative z-30 container mx-auto max-w-6xl px-4 pt-20 md:px-10 flex items-center">
         <div className="grid lg:grid-cols-2 gap-5 items-center w-full">
           {/* Left side - Text content */}
           <motion.div
@@ -112,7 +112,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
-              className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed"
+              className="text-lg hidden md:block md:text-xl text-neutral-400 max-w-2xl leading-relaxed"
             >
               Crafting beautiful, responsive, and user-friendly web experiences
               with modern technologies. Passionate about transforming ideas into
@@ -124,7 +124,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-row gap-4 "
             >
               <AnimatedButton className="transform hover:scale-105 transition-transform duration-300">
                 View My Work
