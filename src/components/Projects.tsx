@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { projectsData } from "@/data/projectsData";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { LuArrowRight } from "react-icons/lu";

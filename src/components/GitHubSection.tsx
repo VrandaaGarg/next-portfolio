@@ -5,24 +5,16 @@ import { motion } from "framer-motion";
 import {
   Github,
   Calendar,
-  Flame,
-  Target,
-  TrendingUp,
-  BarChart3,
   Trophy,
   Zap,
-  Star,
-  Users,
-  BookOpen,
-  Clock,
   ExternalLink,
   ChevronsLeftRight,
 } from "lucide-react";
-import { FaCode } from "react-icons/fa";
 import { PiSmileySad } from "react-icons/pi";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import { subDays, format } from "date-fns";
+import Image from "next/image";
 
 const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME; // Replace with your GitHub username
 const GITHUB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN; // Add your GitHub token to .env.local
@@ -55,39 +47,6 @@ export default function GitHubSection() {
     currentStreak: 0,
     averagePerDay: 0,
   });
-
-  const bgVariants = {
-    initial: { scale: 0.8, opacity: 0.3 },
-    animate: {
-      scale: [1, 1.05, 1],
-      opacity: [0.3, 0.6, 0.3],
-      transition: {
-        duration: 8,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-      },
-    },
-    hover: {
-      y: -5,
-      scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut",
-      },
-    },
-  };
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -149,7 +108,8 @@ export default function GitHubSection() {
 
             // Convert nested weeks data into a flat array
             const formattedData: ContributionDay[] = rawContributions.flatMap(
-              (week: any) => week.contributionDays
+              (week: { contributionDays: ContributionDay[] }) =>
+                week.contributionDays
             );
 
             return formattedData;
@@ -237,64 +197,6 @@ export default function GitHubSection() {
     fetchGitHubData();
   }, []);
 
-  const profileStats = githubData
-    ? [
-        {
-          label: "Public Repositories",
-          value: githubData.public_repos || 0,
-          icon: BookOpen,
-          color: "from-[#fa0f69] to-[#ff1b6b]",
-        },
-        {
-          label: "Followers",
-          value: githubData.followers || 0,
-          icon: Users,
-          color: "from-[#ff1b6b] to-[#ff4081]",
-        },
-        {
-          label: "Following",
-          value: githubData.following || 0,
-          icon: Users,
-          color: "from-[#ff4081] to-[#fa0f69]",
-        },
-        {
-          label: "Years on GitHub",
-          value:
-            new Date().getFullYear() -
-            new Date(githubData.created_at).getFullYear(),
-          icon: Clock,
-          color: "from-[#c11853] to-[#d44575]",
-        },
-      ]
-    : [];
-
-  const contributionStatsData = [
-    {
-      label: "Total Contributions",
-      value: contributionStats.totalContributions,
-      icon: Target,
-      color: "from-[#fa0f69] to-[#ff1b6b]",
-    },
-    {
-      label: "Longest Streak",
-      value: `${contributionStats.longestStreak} days`,
-      icon: Flame,
-      color: "from-[#ff1b6b] to-[#ff4081]",
-    },
-    {
-      label: "Current Streak",
-      value: `${contributionStats.currentStreak} days`,
-      icon: TrendingUp,
-      color: "from-[#ff4081] to-[#fa0f69]",
-    },
-    {
-      label: "Daily Average",
-      value: contributionStats.averagePerDay,
-      icon: Calendar,
-      color: "from-[#c11853] to-[#d44575]",
-    },
-  ];
-
   if (isLoading) {
     return (
       <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden py-20 px-4">
@@ -334,15 +236,31 @@ export default function GitHubSection() {
     <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden  py-20 px-4">
       {/* Animated Background */}
       <motion.div
-        initial="initial"
-        animate="animate"
+        initial={{ scale: 0.8, opacity: 0.3 }}
+        animate={{
+          scale: [1, 1.05, 1],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
         className="absolute top-20 -right-16 z-0 w-32 h-32 md:w-96 md:h-96 rounded-full bg-[#fa0f69]/10 blur-3xl pointer-events-none"
       />
       <motion.div
-        initial="initial"
-        animate="animate"
+        initial={{ scale: 0.8, opacity: 0.3 }}
+        animate={{
+          scale: [1, 1.05, 1],
+          opacity: [0.3, 0.6, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 2,
+        }}
         className="absolute bottom-40 -left-36 z-0 w-32 h-32 md:w-80 md:h-80 rounded-full bg-[#ff1b6b]/10 blur-3xl pointer-events-none"
-        style={{ animationDelay: "2s" }}
       />
 
       <div className="relative z-10 container mx-auto max-w-6xl px-10">
@@ -384,15 +302,11 @@ export default function GitHubSection() {
 
         {githubData ? (
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.1 },
-              },
+            transition={{
+              staggerChildren: 0.1,
             }}
             className="space-y-12"
           >
@@ -430,7 +344,6 @@ export default function GitHubSection() {
                 transition={{ delay: 0.3 }}
                 className="contribution-heatmap overflow-x-auto"
               >
-                {/* @ts-ignore - react-calendar-heatmap has typing issues */}
                 <CalendarHeatmap
                   startDate={subDays(new Date(), 365)}
                   endDate={new Date()}
@@ -438,11 +351,13 @@ export default function GitHubSection() {
                     date: day.date,
                     count: day.contributionCount,
                   }))}
-                  classForValue={(value: any) => {
-                    if (!value || value.count === 0) return "color-empty";
-                    if (value.count < 3) return "color-scale-1";
-                    if (value.count < 6) return "color-scale-2";
-                    if (value.count < 10) return "color-scale-3";
+                  classForValue={(value: unknown) => {
+                    const typedValue = value as { count: number } | null;
+                    if (!typedValue || typedValue.count === 0)
+                      return "color-empty";
+                    if (typedValue.count < 3) return "color-scale-1";
+                    if (typedValue.count < 6) return "color-scale-2";
+                    if (typedValue.count < 10) return "color-scale-3";
                     return "color-scale-4";
                   }}
                   showWeekdayLabels={true}
@@ -472,7 +387,17 @@ export default function GitHubSection() {
             {/* GitHub Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* GitHub Stats Card */}
-              <motion.div whileHover="hover" className="group">
+              <motion.div
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  transition: {
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                }}
+                className="group"
+              >
                 <div className="glass-effect-with-border rounded-3xl p-5 group-hover:border-[#fa0f69]/40 transition-all duration-300 relative overflow-hidden">
                   <motion.div className="absolute inset-0 bg-gradient-to-r from-[#fa0f69]/5 to-[#ff1b6b]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative z-10">
@@ -490,11 +415,13 @@ export default function GitHubSection() {
                     </div>
 
                     <div className="aspect-auto">
-                      <img
+                      <Image
                         src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400`}
                         className="w-full h-auto rounded-2xl"
                         loading="lazy"
                         alt="GitHub Stats"
+                        width={400}
+                        height={200}
                       />
                     </div>
                   </div>
@@ -502,7 +429,17 @@ export default function GitHubSection() {
               </motion.div>
 
               {/* Streak Stats Card */}
-              <motion.div whileHover="hover" className="group">
+              <motion.div
+                whileHover={{
+                  y: -5,
+                  scale: 1.02,
+                  transition: {
+                    duration: 0.3,
+                    ease: "easeOut",
+                  },
+                }}
+                className="group"
+              >
                 <div className="glass-effect-with-border rounded-3xl p-5 group-hover:border-[#fa0f69]/40 transition-all duration-300 relative overflow-hidden">
                   <motion.div className="absolute inset-0 bg-gradient-to-r from-[#ff1b6b]/5 to-[#ff4081]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative z-10">
@@ -524,11 +461,13 @@ export default function GitHubSection() {
                     </div>
 
                     <div className="aspect-auto">
-                      <img
+                      <Image
                         src={`https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=00000000&ring=fa0f69&currStreakLabel=ff1b6b&fire=ff4081&currStreakNum=ffffff&sideNums=ffffff&sideLabels=a1a1aa&dates=a1a1aa&cache_seconds=86400`}
                         className="w-full h-auto rounded-2xl"
                         loading="lazy"
                         alt="GitHub Streak Stats"
+                        width={400}
+                        height={200}
                       />
                     </div>
                   </div>

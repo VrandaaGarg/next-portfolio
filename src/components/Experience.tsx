@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { FaAward, FaTrophy, FaMedal } from "react-icons/fa6";
 import { HiAcademicCap, HiStar } from "react-icons/hi2";
 import { LuCodeXml, LuCalendar, LuBuilding, LuUser } from "react-icons/lu";
-import { TbCircleDotted, TbSparkles } from "react-icons/tb";
 import { ShineBorder } from "./ui/shine-border";
 import { useState } from "react";
 import { experienceData, Experience } from "@/data/experienceData";
