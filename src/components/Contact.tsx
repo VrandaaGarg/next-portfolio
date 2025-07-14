@@ -85,7 +85,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-20  bg-[#0a0a0a]/40 text-white overflow-hidden"
+      className="relative py-20  text-white overflow-hidden"
     >
       {/* Contact Form and Info */}
       <div className="py-20 ">

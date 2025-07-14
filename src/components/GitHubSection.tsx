@@ -235,36 +235,7 @@ export default function GitHubSection() {
   }
 
   return (
-    <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden  py-20 px-4">
-      {/* Animated Background */}
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0.3 }}
-        animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-20 -right-16 z-0 w-32 h-32 md:w-96 md:h-96 rounded-full bg-[#fa0f69]/10 blur-3xl pointer-events-none"
-      />
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0.3 }}
-        animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.3, 0.6, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2,
-        }}
-        className="absolute bottom-40 -left-36 z-0 w-32 h-32 md:w-80 md:h-80 rounded-full bg-[#ff1b6b]/10 blur-3xl pointer-events-none"
-      />
-
+    <section className="min-h-screen  relative overflow-hidden  py-20 px-4">
       <div className="relative z-10 container mx-auto max-w-6xl px-10">
         {/* Section Header */}
         <motion.div

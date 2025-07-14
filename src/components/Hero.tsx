@@ -12,6 +12,8 @@ import {
   IconMail,
   IconUser,
 } from "@tabler/icons-react";
+import { FaInstagram } from "react-icons/fa6";
+import { Instagram } from "lucide-react";
 
 export default function Hero() {
   const socialLinks = [
@@ -44,16 +46,16 @@ export default function Hero() {
       href: "https://peerlist.io/vrandagarg", // Replace with your actual Peerlist
     },
     {
-      title: "Email",
+      title: "Instagram",
       icon: (
-        <IconMail className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
+        <Instagram className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
-      href: "mailto:hi@vrandagarg.in", // Replace with your actual email
+      href: "https://instagram.com/vrandaagarg", // Replace with your actual email
     },
   ];
 
   return (
-    <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden">
+    <section className="min-h-screen relative overflow-hidden">
       {/* Background gradient overlay */}
 
       <div className="relative z-30 container mx-auto max-w-6xl px-4 pt-20 md:px-10 flex min-h-screen items-center">
@@ -145,7 +147,7 @@ export default function Hero() {
               <div className="flex justify-center sm:justify-start">
                 <FloatingDock
                   items={socialLinks}
-                  desktopClassName="bg-[#18181a]/80 backdrop-blur-lg border border-[#fa0f69]/20"
+                  desktopClassName="bg-white backdrop-blur-lg border border-[#fa0f69]/20"
                   mobileClassName="translate-y-0"
                 />
               </div>

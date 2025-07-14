@@ -188,7 +188,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
 
 export default function ExperienceTimeline() {
   return (
-    <section className="py-16 md:py-20 bg-[#0a0a0a]/40 relative overflow-hidden">
+    <section className="py-16 md:py-20 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 relative">
         {/* Animated Background Elements */}
 

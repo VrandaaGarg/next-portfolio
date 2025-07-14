@@ -9,7 +9,7 @@ export default function Projects() {
   const featuredProjects = projectsData.slice(0, 2);
 
   return (
-    <section className="py-20 px-4 bg-[#0a0a0a]/40">
+    <section className="py-20 px-4 ">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
