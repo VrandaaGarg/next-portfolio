@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Home, FolderOpen, ExternalLink } from "lucide-react";
+import { BsFillHeartFill } from "react-icons/bs";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,10 +33,10 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        className={`bg-[#0a0a0a]/80 rounded-full border backdrop-blur-md ${
+        className={`bg-[#280512]/20 rounded-full border backdrop-blur-xl ${
           isScrolled
-            ? "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/15 border-r-[var(--primary-pink)]/15 border-b-transparent border-l-transparent"
-            : "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/10 border-r-[var(--primary-pink)]/10 border-b-transparent border-l-transparent"
+            ? "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/15 border-r-[var(--primary-pink)]/15 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10"
+            : "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/10 border-r-[var(--primary-pink)]/10 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10"
         }`}
         animate={{
           width: isScrolled ? "90vw" : "95vw",
@@ -47,9 +48,12 @@ export default function Navbar() {
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="flex items-center justify-between px-6 py-2">
+        <div className="flex items-center justify-between px-4 md:px-6 py-1.5 md:py-2">
           {/* Logo/Brand */}
-          <Link href="/" className="relative group">
+          <Link href="/" className="relative group flex  gap-3">
+            <div className="flex justify-center items-center">
+              <BsFillHeartFill className="text-[#d44575]  animate-pulse text-2xl hover:rotate-12 duration-300" />
+            </div>
             <motion.span
               className="font-bold text-lg md:text-2xl text-transparent bg-clip-text bg-gradient-to-b from-[#ffb3cd] to-[#ff1b6b]"
               whileHover={{ scale: 1.05 }}
@@ -155,7 +159,7 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="md:hidden mt-2 mx-2.5 bg-[#0a0a0a]/90 backdrop-blur-2xl rounded-2xl overflow-hidden border-t border-[var(--border-color)]"
+            className="md:hidden mt-2 mx-2.5 bg-[#280512]/20 border border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/15 border-r-[var(--primary-pink)]/15 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10  backdrop-blur-xl rounded-2xl overflow-hidden  border-[var(--border-color)]"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -183,7 +187,9 @@ export default function Navbar() {
                         >
                           <IconComponent className="text-[#d04780]" size={18} />
                         </motion.div>
-                        <span className="text-base">{item.name}</span>
+                        <span className="text-base text-white">
+                          {item.name}
+                        </span>
 
                         <motion.div
                           initial={{ opacity: 0 }}

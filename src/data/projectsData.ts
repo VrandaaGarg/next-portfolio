@@ -12,94 +12,113 @@ export interface Project {
 export const projectsData: Project[] = [
   {
     id: "1",
-    name: "E-Commerce Platform",
-    image: "https://smartbite.vrandagarg.in/banner.png", // Using placeholder image
-    icon: "🛒",
+    name: "AV Chat",
+    image: "https://vrandagarg.in/avchat.png", // Using placeholder image
+    icon: "🤖",
     description:
-      "A full-stack e-commerce platform with user authentication, product management, shopping cart, and payment integration.",
+      "Next-Generation AI Chat Platform-Experience intelligent conversations with 20+ advanced AI models. Fast, secure, and designed for the future of communication.",
     techStack: [
-      "React",
+      "Tailwind CSS",
       "Next.js",
       "TypeScript",
-      "Tailwind CSS",
-      "Node.js",
-      "MongoDB",
-      "Stripe",
+      "Open Router",
+      "Appwrite",
+      "Zustand",
+      "Runware",
     ],
-    liveDemoUrl: "https://ecommerce-demo.vercel.app",
-    githubUrl: "https://github.com/username/ecommerce-platform",
+    liveDemoUrl: "https://avchat.xyz",
+    githubUrl: "https://github.com/cyberboyayush/AVChat",
   },
   {
     id: "2",
-    name: "Task Management App",
-    image: "https://smartbite.vrandagarg.in/banner.png", // Using placeholder image
-    icon: "📋",
+    name: "ResuMate",
+    image: "https://vrandagarg.in/resumate.png", // Using placeholder image
+    icon: "📄",
     description:
-      "A collaborative task management application with real-time updates, team collaboration, and project tracking features.",
-    techStack: ["React", "TypeScript", "Firebase", "Material-UI", "Socket.io"],
-    liveDemoUrl: "https://taskmanager-demo.vercel.app",
-    githubUrl: "https://github.com/username/task-manager",
+      "ResuMate is an AI-powered platform for building professional, ATS-friendly resumes with live editing, smart formatting, and real-time feedback.",
+    techStack: [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "OpenAI API",
+      "Firebase",
+    ],
+    liveDemoUrl: "https://smartbite.vrandagarg.in/",
+    githubUrl: "https://github.com/VrandaaGarg/ResuMate",
   },
   {
     id: "3",
-    name: "Weather Dashboard",
+    name: "SmartBite",
     image: "https://smartbite.vrandagarg.in/banner.png", // Using placeholder image
-    icon: "🌤️",
+    icon: "🍔",
     description:
-      "A responsive weather dashboard with location-based forecasts, interactive maps, and weather alerts.",
-    techStack: ["Vue.js", "JavaScript", "OpenWeather API", "Chart.js", "CSS3"],
+      "SmartBite is a full-stack food ordering app for single restaurants, offering seamless menu browsing, order management, and customer tracking—all",
+    techStack: ["React JS", "JavaScript", "Appwrite", "Email JS"],
     liveDemoUrl: "https://weather-dashboard-demo.vercel.app",
-    githubUrl: "https://github.com/username/weather-dashboard",
+    githubUrl: "https://github.com/VrandaaGarg/smartbite",
   },
   {
     id: "4",
-    name: "Social Media App",
-    image: "https://smartbite.vrandagarg.in/banner.png", // Using placeholder image
-    icon: "📱",
+    name: "Arcadia",
+    image: "https://vrandagarg.in/arcadia.png", // Using placeholder image
+    icon: "🎮",
     description:
       "A social media platform with user profiles, posts, comments, likes, and real-time messaging functionality.",
-    techStack: [
-      "React Native",
-      "TypeScript",
-      "Express.js",
-      "PostgreSQL",
-      "Redis",
-    ],
-    liveDemoUrl: "https://social-app-demo.vercel.app",
-    githubUrl: "https://github.com/username/social-media-app",
+    techStack: ["React JS", "Tailwind CSS", "Node.js", "Express.js", "MongoDB"],
+    liveDemoUrl: "https://arcadia.vrandagarg.me/",
+    githubUrl: "https://github.com/VrandaaGarg/Arcadia",
   },
   {
     id: "5",
-    name: "Portfolio Website",
-    image: "https://smartbite.vrandagarg.in/banner.png", // Using placeholder image
-    icon: "💼",
+    name: "SkillCompass",
+    image: "https://vrandagarg.in/skillcompass.png", // Using placeholder image
+    icon: "🧭",
     description:
-      "A modern portfolio website showcasing projects, skills, and experience with smooth animations and responsive design.",
+      "SkillCompass is an AI-powered learning platform that personalizes your learning journey with interactive modules, adaptive quizzes, and real-time feedback.",
     techStack: [
-      "Next.js",
-      "TypeScript",
+      "React JS",
+      "JavaScript",
       "Tailwind CSS",
       "Framer Motion",
-      "Vercel",
+      "Appwrite",
+      "Gemini API",
     ],
-    liveDemoUrl: "https://portfolio-demo.vercel.app",
-    githubUrl: "https://github.com/username/portfolio",
+    liveDemoUrl: "https://skillcompass.glucon-d.xyz/",
+    githubUrl: "https://github.com/Glucon-D/SkillCompass",
   },
   {
     id: "6",
-    name: "Blog Platform",
-    image: "https://smartbite.vrandagarg.in/banner.png", // Using placeholder image
-    icon: "📝",
+    name: "FinWise",
+    image: "https://vrandagarg.in/finwise.png", // Using placeholder image
+    icon: "💰",
     description:
-      "A full-featured blog platform with markdown support, SEO optimization, and content management system.",
+      "FinWise is an AI-powered investment platform that helps beginners understand and plan their investments based on risk, capital, age, and financial goals.",
     techStack: [
-      "Next.js",
-      "TypeScript",
-      "Sanity CMS",
+      "React JS",
+      "JavaScript",
+      "Appwrite",
       "Tailwind CSS",
-      "Vercel",
+      "Framer Motion",
+      "Gemini API",
     ],
-    liveDemoUrl: "https://blog-platform-demo.vercel.app",
-    githubUrl: "https://github.com/username/blog-platform",
+    liveDemoUrl: "https://finwise.ayush-sharma.in/",
+    githubUrl: "https://github.com/Glucon-D/FinWise",
+  },
+  {
+    id: "7",
+    name: "Portfolio",
+    image: "https://vrandagarg.in/portfolio.png", // Using placeholder image
+    icon: "🩷",
+    description:
+      "This portfolio showcases my skills, projects, and experiences. It features a modern design with smooth animations, responsive layout, and interactive elements.",
+    techStack: [
+      "Next JS",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Lucide Icons",
+    ],
+    liveDemoUrl: "https://finwise.ayush-sharma.in/",
+    githubUrl: "https://github.com/Glucon-D/FinWise",
   },
 ];

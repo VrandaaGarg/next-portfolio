@@ -6,19 +6,19 @@ import ProjectCard from "@/components/ui/ProjectCard";
 
 export default function Projects() {
   return (
-    <main className="min-h-screen py-20 px-4 bg-[#0a0a0a]/40">
+    <main className="min-h-screen py-28 px-4 bg-[#0a0a0a]/40">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-8 md:mb-16"
         >
-          <h1 className="text-5xl md:text-6xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold text-neutral-900 dark:text-neutral-100 mb-2.5 md:mb-6">
             All <span className="text-[#ff4081]">Projects</span>
           </h1>
-          <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
+          <p className="text-md md:text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
             A comprehensive collection of my work, showcasing various
             technologies and creative solutions
           </p>

@@ -33,7 +33,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
   return (
     <motion.div
       className={cn(
-        "group relative md:h-[500px] h-[450px] w-[380px] overflow-hidden rounded-2xl p-0 md:w-[700px]",
+        "group relative md:h-[500px] h-[450px] w-[350px] overflow-hidden rounded-2xl p-0 md:w-[700px]",
         "border border-neutral-200/60 bg-white/50 backdrop-blur-sm hover:cursor-pointer",
         "dark:border-pink-800/60 dark:bg-neutral-950/50",
         "shadow-sm transition-shadow duration-300 hover:shadow-lg",
@@ -145,7 +145,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div className="text-neutral-900 dark:text-neutral-100">
-          <div className="mb-2 flex items-center justify-between text-md font-semibold text-neutral-900 dark:text-neutral-100">
+          <div className="mb-1.5 md:mb-2 flex items-center justify-between text-md font-semibold text-neutral-900 dark:text-neutral-100">
             <span>Project Details</span>
             <button
               onClick={(e) => {
@@ -168,12 +168,12 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               </span>
             </button>
           </div>
-          <p className="mb-3 text-sm font-medium leading-relaxed text-neutral-600 dark:text-neutral-400">
+          <p className="mb-1.5 md:mb-3 text-sm font-medium leading-relaxed text-neutral-600 dark:text-neutral-400">
             {project.description}
           </p>
 
           {/* Tech Stack */}
-          <div className="mb-3">
+          <div className="mb-1.5 md:mb-3">
             <p className="mb-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
               Tech Stack:
             </p>
@@ -181,7 +181,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               {project.techStack.map((tech, index) => (
                 <span
                   key={index}
-                  className="rounded-md bg-neutral-100 px-2 py-1 text-sm font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+                  className="rounded-md bg-neutral-100 px-2 py-0.5 md:py-1 text-sm font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
                 >
                   {tech}
                 </span>
@@ -190,7 +190,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
           </div>
 
           {/* Action Buttons */}
-          <div className="space-y-2 flex flex-row items-center justify-center gap-2">
+          <div className="mt-1.5 flex flex-row items-center justify-center gap-2">
             {project.liveDemoUrl && (
               <Link
                 target="_blank"
@@ -206,7 +206,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <Link
               target="_blank"
               href={project.githubUrl}
-              className="flex w-full mb-2 items-center gap-1.5 md:gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-2 py-2 md:px-4 md:py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
+              className="flex w-full items-center gap-1.5 md:gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-2 py-2 md:px-4 md:py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
             >
               <span className="flex h-5 w-5 items-center justify-center text-neutral-500 dark:text-neutral-400">
                 <LuGithub />
