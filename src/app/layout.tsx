@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import AnimatedBackground from "@/components/animations/AnimatedBackground";
-import AnimatedCursor from "@/components/animations/AnimatedCursor";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -29,13 +28,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased cursor-none`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         {/* Animated background for entire site */}
         <AnimatedBackground particleCount={40} />
 
         {/* Custom animated cursor */}
-        <AnimatedCursor />
 
         <div className="relative z-20">
           <Navbar />

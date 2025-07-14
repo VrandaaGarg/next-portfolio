@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, FolderOpen, ExternalLink } from "lucide-react";
+import { Menu, X, Home, FolderOpen, ExternalLink, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,6 +22,7 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", href: "/", icon: Home },
     { name: "Projects", href: "/projects", icon: FolderOpen },
+    { name: "Contact", href: "/#contact", icon: Mail },
   ];
 
   return (

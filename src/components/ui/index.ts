@@ -7,3 +7,4 @@ export { default as SkillCategory } from "./SkillCategory";
 export { TypewriterEffect } from "./typewriter-effect";
 export { BorderBeam } from "./animated-border-beam";
 export { ShineBorder } from "./shine-border";
+export { default as WorldMap } from "./world-map";

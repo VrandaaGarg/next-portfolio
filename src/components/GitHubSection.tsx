@@ -9,6 +9,7 @@ import {
   Zap,
   ExternalLink,
   ChevronsLeftRight,
+  Loader2,
 } from "lucide-react";
 import { PiSmileySad } from "react-icons/pi";
 import CalendarHeatmap from "react-calendar-heatmap";
@@ -16,7 +17,8 @@ import "react-calendar-heatmap/dist/styles.css";
 import { subDays, format } from "date-fns";
 import Image from "next/image";
 
-const GITHUB_USERNAME = process.env.NEXT_PUBLIC_GITHUB_USERNAME; // Replace with your GitHub username
+const GITHUB_USERNAME =
+  process.env.NEXT_PUBLIC_GITHUB_USERNAME || "vrandaagarg"; // Replace with your GitHub username
 const GITHUB_ACCESS_TOKEN = process.env.NEXT_PUBLIC_GITHUB_TOKEN; // Add your GitHub token to .env.local
 
 interface ContributionDay {
@@ -199,7 +201,7 @@ export default function GitHubSection() {
 
   if (isLoading) {
     return (
-      <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden py-20 px-4">
+      <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden py-10 px-4">
         <div className="container mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0 }}
@@ -224,6 +226,7 @@ export default function GitHubSection() {
               transition={{ duration: 2, repeat: Infinity }}
               className="text-xl text-neutral-300 ml-4"
             >
+              <Loader2 className="w-4 h-4 animate-spin" />
               Loading GitHub data...
             </motion.p>
           </motion.div>
@@ -416,12 +419,25 @@ export default function GitHubSection() {
 
                     <div className="aspect-auto">
                       <Image
-                        src="https://github-readme-stats.vercel.app/api?username=vrandaagarg&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400"
+                        src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400`}
                         className="w-full h-auto rounded-2xl"
                         loading="lazy"
                         alt="GitHub Stats"
                         width={400}
                         height={200}
+                        onError={(e) => {
+                          console.error(
+                            "GitHub Stats image failed to load:",
+                            e
+                          );
+                          console.log(
+                            "Attempted URL:",
+                            `https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400`
+                          );
+                        }}
+                        onLoad={() =>
+                          console.log("GitHub Stats image loaded successfully")
+                        }
                       />
                     </div>
                   </div>
