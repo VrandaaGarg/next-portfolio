@@ -106,21 +106,21 @@ export default function WorldMap({
                 cy={projectPoint(dot.start.lat, dot.start.lng).y}
                 r="2"
                 fill={lineColor}
-                opacity="0.5"
+                opacity="0.3"
               >
                 <animate
                   attributeName="r"
                   from="2"
-                  to="8"
-                  dur="1.5s"
+                  to="6"
+                  dur="3s"
                   begin="0s"
                   repeatCount="indefinite"
                 />
                 <animate
                   attributeName="opacity"
-                  from="0.5"
+                  from="0.3"
                   to="0"
-                  dur="1.5s"
+                  dur="3s"
                   begin="0s"
                   repeatCount="indefinite"
                 />
@@ -138,21 +138,21 @@ export default function WorldMap({
                 cy={projectPoint(dot.end.lat, dot.end.lng).y}
                 r="2"
                 fill={lineColor}
-                opacity="0.5"
+                opacity="0.3"
               >
                 <animate
                   attributeName="r"
                   from="2"
-                  to="8"
-                  dur="1.5s"
+                  to="6"
+                  dur="3s"
                   begin="0s"
                   repeatCount="indefinite"
                 />
                 <animate
                   attributeName="opacity"
-                  from="0.5"
+                  from="0.3"
                   to="0"
-                  dur="1.5s"
+                  dur="3s"
                   begin="0s"
                   repeatCount="indefinite"
                 />

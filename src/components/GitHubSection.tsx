@@ -15,7 +15,6 @@ import { PiSmileySad } from "react-icons/pi";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import { subDays, format } from "date-fns";
-import Image from "next/image";
 
 const GITHUB_USERNAME =
   process.env.NEXT_PUBLIC_GITHUB_USERNAME || "vrandaagarg"; // Replace with your GitHub username
@@ -418,27 +417,33 @@ export default function GitHubSection() {
                     </div>
 
                     <div className="aspect-auto">
-                      <Image
-                        src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400`}
-                        className="w-full h-auto rounded-2xl"
-                        loading="lazy"
-                        alt="GitHub Stats"
-                        width={400}
-                        height={200}
-                        onError={(e) => {
-                          console.error(
-                            "GitHub Stats image failed to load:",
-                            e
-                          );
-                          console.log(
-                            "Attempted URL:",
-                            `https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true&cache_seconds=86400`
-                          );
-                        }}
-                        onLoad={() =>
-                          console.log("GitHub Stats image loaded successfully")
-                        }
-                      />
+                      <picture>
+                        <source
+                          srcSet={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true`}
+                          media="(prefers-color-scheme: dark)"
+                        />
+                        <img
+                          src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true`}
+                          className="w-full h-auto rounded-2xl"
+                          loading="lazy"
+                          alt="GitHub Stats"
+                          onError={(e) => {
+                            console.error(
+                              "GitHub Stats image failed to load:",
+                              e
+                            );
+                            console.log(
+                              "Attempted URL:",
+                              `https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true`
+                            );
+                          }}
+                          onLoad={() =>
+                            console.log(
+                              "GitHub Stats image loaded successfully"
+                            )
+                          }
+                        />
+                      </picture>
                     </div>
                   </div>
                 </div>
@@ -477,14 +482,33 @@ export default function GitHubSection() {
                     </div>
 
                     <div className="aspect-auto">
-                      <Image
-                        src={`https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=00000000&ring=fa0f69&currStreakLabel=ff1b6b&fire=ff4081&currStreakNum=ffffff&sideNums=ffffff&sideLabels=a1a1aa&dates=a1a1aa&cache_seconds=86400`}
-                        className="w-full h-auto rounded-2xl"
-                        loading="lazy"
-                        alt="GitHub Streak Stats"
-                        width={400}
-                        height={200}
-                      />
+                      <picture>
+                        <source
+                          srcSet={`https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=00000000&ring=fa0f69&currStreakLabel=ff1b6b&fire=ff4081&currStreakNum=ffffff&sideNums=ffffff&sideLabels=a1a1aa&dates=a1a1aa`}
+                          media="(prefers-color-scheme: dark)"
+                        />
+                        <img
+                          src={`https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=light`}
+                          className="w-full h-auto rounded-2xl"
+                          loading="lazy"
+                          alt="GitHub Streak Stats"
+                          onError={(e) => {
+                            console.error(
+                              "GitHub Streak Stats image failed to load:",
+                              e
+                            );
+                            console.log(
+                              "Attempted URL:",
+                              `https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=light`
+                            );
+                          }}
+                          onLoad={() =>
+                            console.log(
+                              "GitHub Streak Stats image loaded successfully"
+                            )
+                          }
+                        />
+                      </picture>
                     </div>
                   </div>
                 </div>

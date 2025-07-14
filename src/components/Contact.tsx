@@ -1,9 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { WorldMap } from "@/components/ui";
 import { Mail, Send, User } from "lucide-react";
+
+// Optimized form input component to reduce re-renders
+const FormInput = ({
+  type,
+  placeholder,
+  name,
+  value,
+  onChange,
+  icon,
+}: {
+  type: string;
+  placeholder: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  icon: React.ReactNode;
+}) => (
+  <div className="relative">
+    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+      {icon}
+    </div>
+    <input
+      type={type}
+      id={name}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required
+      className="w-full px-4 pl-10 py-3 glass-effect bg-[var(--card-bg)]/30 border border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-1 focus:ring-[var(--primary-pink)] focus:border-[var(--primary-pink)] transition-colors duration-200 text-[var(--text-primary)] placeholder-[var(--text-muted)]"
+      placeholder={placeholder}
+      autoComplete={name}
+    />
+  </div>
+);
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -63,14 +97,14 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.5, delay: 0.3 }} // Reduced duration
             className="space-y-8 flex flex-col text-center items-center justify-center"
           >
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.5 }} // Reduced duration
               className="text-5xl text-center md:text-5xl lg:text-5xl font-bold mb-8 relative z-20"
             >
               Let&apos;s get in{" "}
@@ -84,18 +118,7 @@ export default function Contact() {
               <h3 className="text-xl font-semibold mb-4 text-center">
                 Remote{" "}
                 <span className="text-[var(--text-secondary)]">
-                  {"Connectivity".split("").map((letter, idx) => (
-                    <motion.span
-                      key={idx}
-                      className="inline-block"
-                      initial={{ x: -10, opacity: 0 }}
-                      whileInView={{ x: 0, opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: idx * 0.04 }}
-                    >
-                      {letter}
-                    </motion.span>
-                  ))}
+                  Connectivity
                 </span>
               </h3>
               <p className="text-sm text-[var(--text-muted)] text-center mb-6">
@@ -148,88 +171,88 @@ export default function Contact() {
               </p>
             </div>
 
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="glass-effect bg-[var(--card-bg)]/50 border border-[var(--primary-pink)]/30 rounded-lg p-6 text-center backdrop-blur-md"
-              >
-                <div className="text-[var(--primary-pink)] text-4xl mb-4">
-                  ✓
-                </div>
-                <h3 className="text-xl font-semibold text-[var(--primary-pink)] mb-2">
-                  Message Sent!
-                </h3>
-                <p className="text-[var(--text-secondary)]">
-                  Thank you for reaching out. I&apos;ll get back to you soon!
-                </p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <User className="text-[var(--primary-pink)]" />
+            <AnimatePresence>
+              {isSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  className="glass-effect bg-[var(--card-bg)]/50 border border-[var(--primary-pink)]/30 rounded-lg p-6 text-center backdrop-blur-md"
+                >
+                  <div className="text-[var(--primary-pink)] text-4xl mb-4">
+                    ✓
                   </div>
-                  <input
+                  <h3 className="text-xl font-semibold text-[var(--primary-pink)] mb-2">
+                    Message Sent!
+                  </h3>
+                  <p className="text-[var(--text-secondary)]">
+                    Thank you for reaching out. I&apos;ll get back to you soon!
+                  </p>
+                  <button
+                    onClick={() => setIsSubmitted(false)}
+                    className="mt-4 px-6 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-lg transition-all duration-300"
+                  >
+                    Send Another Message
+                  </button>
+                </motion.div>
+              ) : (
+                <motion.form
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="space-y-6"
+                >
+                  <FormInput
                     type="text"
-                    id="name"
+                    placeholder="Your name"
                     name="name"
                     value={formData.name}
                     onChange={handleInputChange}
-                    required
-                    className="w-full px-4 pl-10 py-3 glass-effect bg-[var(--card-bg)]/30 border border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-1 focus:ring-[var(--primary-pink)] focus:border-[var(--primary-pink)] transition-all duration-200 text-[var(--text-primary)] placeholder-[var(--text-muted)]"
-                    placeholder="Your name"
+                    icon={<User className="text-[var(--primary-pink)]" />}
                   />
-                </div>
 
-                <div className="relative">
-                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                    <Mail className="text-[var(--primary-pink)]" />
-                  </div>
-                  <input
+                  <FormInput
                     type="email"
-                    id="email"
+                    placeholder="your.email@example.com"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    required
-                    className="w-full px-4 pl-10 py-3 glass-effect bg-[var(--card-bg)]/30 border border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-1 focus:ring-[var(--primary-pink)] focus:border-[var(--primary-pink)] transition-all duration-200 text-[var(--text-primary)] placeholder-[var(--text-muted)]"
-                    placeholder="your.email@example.com"
+                    icon={<Mail className="text-[var(--primary-pink)]" />}
                   />
-                </div>
 
-                <div>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 glass-effect bg-[var(--card-bg)]/30 border border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-1 focus:ring-[var(--primary-pink)] focus:border-[var(--primary-pink)] transition-all duration-200 resize-none text-[var(--text-primary)] placeholder-[var(--text-muted)]"
-                    placeholder="Your message"
-                  />
-                </div>
+                  <div>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={6}
+                      className="w-full px-4 py-3 glass-effect bg-[var(--card-bg)]/30 border border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-1 focus:ring-[var(--primary-pink)] focus:border-[var(--primary-pink)] transition-colors duration-200 resize-none text-[var(--text-primary)] placeholder-[var(--text-muted)]"
+                      placeholder="Your message"
+                    />
+                  </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full gradient-primary hover:gradient-secondary disabled:opacity-50 disabled:cursor-not-allowed px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 text-white hover-glow"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4" />
-                      Send Message
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full gradient-primary hover:gradient-secondary disabled:opacity-50 disabled:cursor-not-allowed px-8 py-3 rounded-lg font-medium transition-all duration-200 flex items-center justify-center gap-2 text-white hover-glow"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </motion.form>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
