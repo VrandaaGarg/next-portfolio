@@ -5,36 +5,33 @@ import { motion } from "framer-motion";
 import { FloatingDock } from "@/components/ui/floating-dock";
 import AnimatedButton from "@/components/ui/animated-button";
 import RoleTypewriter from "@/components/animations/RoleTypewriter";
-import {
-  IconBrandTwitter,
-  IconBrandLinkedin,
-  IconBrandGithub,
-} from "@tabler/icons-react";
+import { IconBrandLinkedin, IconBrandGithub } from "@tabler/icons-react";
 import { SiPeerlist } from "react-icons/si";
 import { FaInstagram } from "react-icons/fa6";
+import { RiTwitterXLine } from "react-icons/ri";
 
 export default function Hero() {
   const socialLinks = [
     {
       title: "Twitter",
       icon: (
-        <IconBrandTwitter className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
+        <RiTwitterXLine className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
-      href: "https://twitter.com/vranda_garg_", // Replace with your actual Twitter
+      href: "https://x.com/vranda_garg_", // Replace with your actual Twitter
     },
     {
       title: "LinkedIn",
       icon: (
         <IconBrandLinkedin className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
-      href: "https://linkedin.com/in/vrandagarg", // Replace with your actual LinkedIn
+      href: "https://www.linkedin.com/in/vrandagarg/", // Replace with your actual LinkedIn
     },
     {
       title: "GitHub",
       icon: (
         <IconBrandGithub className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
-      href: "https://github.com/vrandaagarg", // Replace with your actual GitHub
+      href: "https://github.com/VrandaaGarg", // Replace with your actual GitHub
     },
     {
       title: "Peerlist",
@@ -48,7 +45,7 @@ export default function Hero() {
       icon: (
         <FaInstagram className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
-      href: "https://instagram.com/vrandaagarg", // Replace with your actual email
+      href: "https://instagram.com/vranda_garg", // Replace with your actual email
     },
   ];
 
