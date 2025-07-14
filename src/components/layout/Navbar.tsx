@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, FolderOpen, ExternalLink, Mail } from "lucide-react";
+import { Menu, X, Home, FolderOpen, ExternalLink } from "lucide-react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,7 +22,6 @@ export default function Navbar() {
   const navItems = [
     { name: "Home", href: "/", icon: Home },
     { name: "Projects", href: "/projects", icon: FolderOpen },
-    { name: "Contact", href: "/#contact", icon: Mail },
   ];
 
   return (
@@ -33,10 +32,10 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <motion.div
-        className={`glass-effect rounded-full border backdrop-blur-md ${
+        className={`bg-[#0a0a0a]/80 rounded-full border backdrop-blur-md ${
           isScrolled
-            ? "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/30 border-r-[var(--primary-pink)]/30 border-b-transparent border-l-transparent"
-            : "border-transparent"
+            ? "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/15 border-r-[var(--primary-pink)]/15 border-b-transparent border-l-transparent"
+            : "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/10 border-r-[var(--primary-pink)]/10 border-b-transparent border-l-transparent"
         }`}
         animate={{
           width: isScrolled ? "90vw" : "95vw",
@@ -52,7 +51,7 @@ export default function Navbar() {
           {/* Logo/Brand */}
           <Link href="/" className="relative group">
             <motion.span
-              className="font-bold text-lg text-[var(--primary-pink)]"
+              className="font-bold text-lg md:text-2xl text-transparent bg-clip-text bg-gradient-to-b from-[#ffb3cd] to-[#ff1b6b]"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
@@ -90,9 +89,9 @@ export default function Navbar() {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <IconComponent size={16} />
+                      <IconComponent className=" text-lg md:text-xl" />
                     </motion.div>
-                    <span>{item.name}</span>
+                    <span className="text-lg">{item.name}</span>
 
                     <motion.div
                       initial={{ opacity: 0, scale: 0 }}
@@ -112,7 +111,7 @@ export default function Navbar() {
               );
             })}
 
-            <button className="bg-gradient-to-br from-[#c11853] to-[#d44575] text-white px-4 py-2 rounded-full">
+            <button className="bg-gradient-to-br text-lg from-[#c11853] to-[#d44575] text-white px-4 py-2 rounded-full">
               Resume
             </button>
           </motion.div>
@@ -151,56 +150,57 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Dropdown Menu */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              className="md:hidden overflow-hidden border-t border-[var(--border-color)]"
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <div className="px-6 py-4">
-                <div className="flex flex-col space-y-4">
-                  {navItems.map((item, index) => {
-                    const IconComponent = item.icon;
-                    return (
-                      <motion.div
-                        key={item.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                      >
-                        <Link
-                          href={item.href}
-                          className="flex items-center space-x-3 text-[var(--text-secondary)] hover:text-[var(--primary-pink)] transition-colors duration-200 font-medium py-2 group"
-                          onClick={() => setIsMobileMenuOpen(false)}
-                        >
-                          <motion.div
-                            whileHover={{ scale: 1.1, rotate: 5 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <IconComponent size={18} />
-                          </motion.div>
-                          <span>{item.name}</span>
-
-                          <motion.div
-                            initial={{ opacity: 0 }}
-                            whileHover={{ opacity: 1 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <ExternalLink size={14} />
-                          </motion.div>
-                        </Link>
-                      </motion.div>
-                    );
-                  })}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="md:hidden mt-2 mx-2.5 bg-[#0a0a0a]/90 backdrop-blur-2xl rounded-2xl overflow-hidden border-t border-[var(--border-color)]"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-6 py-4">
+              <div className="flex flex-col space-y-4">
+                {navItems.map((item, index) => {
+                  const IconComponent = item.icon;
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="flex items-center space-x-3 text-[var(--text-secondary)] hover:text-[var(--primary-pink)] transition-colors duration-200 font-medium py-2 group"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <IconComponent className="text-[#d04780]" size={18} />
+                        </motion.div>
+                        <span className="text-base">{item.name}</span>
+
+                        <motion.div
+                          initial={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <ExternalLink size={14} />
+                        </motion.div>
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

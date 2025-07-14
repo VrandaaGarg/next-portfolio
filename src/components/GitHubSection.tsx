@@ -236,17 +236,17 @@ export default function GitHubSection() {
 
   return (
     <section className="min-h-screen  relative overflow-hidden  py-20 px-4">
-      <div className="relative z-10 container mx-auto max-w-6xl px-10">
+      <div className="relative z-10 container mx-auto max-w-6xl md:px-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-7 md:mb-16"
         >
           <motion.h2
-            className="text-2xl md:text-5xl font-bold text-white mb-4"
+            className="text-4xl md:text-5xl font-bold text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -258,7 +258,7 @@ export default function GitHubSection() {
               transition={{ duration: 2, repeat: Infinity }}
               className="inline-block ml-4"
             >
-              <ChevronsLeftRight className="inline-block md:h-12 md:w-12 h-6 w-6 text-[#fa0f69]" />
+              <ChevronsLeftRight className="inline-block md:h-12 md:w-12 h-8 w-8 text-[#fa0f69]" />
             </motion.span>
           </motion.h2>
           <motion.p
@@ -281,12 +281,12 @@ export default function GitHubSection() {
             transition={{
               staggerChildren: 0.1,
             }}
-            className="space-y-12"
+            className="space-y-6 md:space-y-12"
           >
             {/* Contribution Heatmap */}
             <motion.div
               whileHover={{ y: -2 }}
-              className="glass-effect-with-border rounded-3xl p-6 md:p-8 group hover:border-[#fa0f69]/40 transition-all duration-300"
+              className="glass-effect-with-border rounded-xl md:rounded-3xl p-4 md:p-8 group hover:border-[#fa0f69]/40 transition-all duration-300"
             >
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -294,7 +294,7 @@ export default function GitHubSection() {
                 viewport={{ once: true }}
                 className="mb-6"
               >
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 flex items-center gap-3">
+                <h3 className="text-xl md:text-3xl justify-center font-bold text-white mb-2 flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: [0, 10, -10, 0] }}
                     transition={{ duration: 2, repeat: Infinity }}
@@ -371,7 +371,7 @@ export default function GitHubSection() {
                 }}
                 className="group"
               >
-                <div className="glass-effect-with-border rounded-3xl p-5 group-hover:border-[#fa0f69]/40 transition-all duration-300 relative overflow-hidden">
+                <div className="glass-effect-with-border rounded-xl md:rounded-3xl p-3 md:p-5 group-hover:border-[#fa0f69]/40 transition-all duration-300 relative overflow-hidden">
                   <motion.div className="absolute inset-0 bg-gradient-to-r from-[#fa0f69]/5 to-[#ff1b6b]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative z-10">
                     <div className="flex items-center justify-center gap-3 mb-3">
@@ -382,7 +382,7 @@ export default function GitHubSection() {
                       >
                         <Trophy className="w-4 h-4 text-white" />
                       </motion.div>
-                      <h3 className="text-xl  font-bold text-white">
+                      <h3 className="text-lg md:text-xl  font-bold text-white">
                         GitHub Stats
                       </h3>
                     </div>
@@ -432,7 +432,7 @@ export default function GitHubSection() {
                 }}
                 className="group"
               >
-                <div className="glass-effect-with-border rounded-3xl p-5 group-hover:border-[#fa0f69]/40 transition-all duration-300 relative overflow-hidden">
+                <div className="glass-effect-with-border rounded-xl md:rounded-3xl p-3 md:p-5 group-hover:border-[#fa0f69]/40 transition-all duration-300 relative overflow-hidden">
                   <motion.div className="absolute inset-0 bg-gradient-to-r from-[#ff1b6b]/5 to-[#ff4081]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   <div className="relative z-10">
                     <div className="flex items-center justify-center gap-3 mb-3">
@@ -499,7 +499,7 @@ export default function GitHubSection() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-[#fa0f69]/25 transition-all duration-300"
+                className="inline-flex items-center gap-3 p-4 md:px-8 py-2.5 md:py-4 bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] text-white font-semibold rounded-full hover:shadow-lg hover:shadow-[#fa0f69]/25 transition-all duration-300"
               >
                 <Github className="w-5 h-5" />
                 Visit GitHub Profile

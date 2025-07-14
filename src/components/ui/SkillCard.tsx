@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { LucideIcon } from "lucide-react";
 import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { ComponentType } from "react";
 
 interface SkillCardProps {
   name: string;
-  icon: LucideIcon;
+  icon: ComponentType<{ size?: number; className?: string }>;
   category: string;
   proficiency?: number;
 }

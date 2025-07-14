@@ -17,7 +17,7 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className={cn(
-          "px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] text-white font-semibold rounded-full",
+          "px-4 md:px-8 py-2 md:py-4 bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] text-white font-semibold rounded-2xl md:rounded-full",
           "hover:shadow-lg hover:shadow-[#fa0f69]/25 transition-all duration-300",
           "relative overflow-hidden group",
           className

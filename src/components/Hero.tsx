@@ -9,11 +9,9 @@ import {
   IconBrandTwitter,
   IconBrandLinkedin,
   IconBrandGithub,
-  IconMail,
-  IconUser,
 } from "@tabler/icons-react";
+import { SiPeerlist } from "react-icons/si";
 import { FaInstagram } from "react-icons/fa6";
-import { Instagram } from "lucide-react";
 
 export default function Hero() {
   const socialLinks = [
@@ -41,14 +39,14 @@ export default function Hero() {
     {
       title: "Peerlist",
       icon: (
-        <IconUser className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
+        <SiPeerlist className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
       href: "https://peerlist.io/vrandagarg", // Replace with your actual Peerlist
     },
     {
       title: "Instagram",
       icon: (
-        <Instagram className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
+        <FaInstagram className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
       href: "https://instagram.com/vrandaagarg", // Replace with your actual email
     },
@@ -58,7 +56,7 @@ export default function Hero() {
     <section className="min-h-screen relative overflow-hidden">
       {/* Background gradient overlay */}
 
-      <div className="relative z-30 container mx-auto max-w-6xl px-4 pt-20 md:px-10 flex min-h-screen items-center">
+      <div className="relative z-30 container mx-auto max-w-6xl px-6 pt-20 md:px-10 flex min-h-screen items-center">
         <div className="grid lg:grid-cols-2 gap-5 items-center w-full">
           {/* Left side - Text content */}
           <motion.div
@@ -72,7 +70,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-2xl md:text-3xl text-neutral-300"
+              className="text-xl md:text-3xl text-neutral-300"
             >
               Hello 👋
             </motion.div>
@@ -82,10 +80,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-5xl md:text-6xl lg:text-6xl font-bold leading-tight"
+              className="text-4xl md:text-6xl lg:text-6xl font-bold leading-tight"
             >
               <span className="text-white">Vranda</span>{" "}
-              <span className="text-gradient-primary">Garg</span>
+              <span className="text-gradient-primary">Garg</span> ,
             </motion.h1>
 
             {/* Role */}
@@ -128,10 +126,10 @@ export default function Hero() {
               transition={{ delay: 1 }}
               className="flex flex-row gap-4 "
             >
-              <AnimatedButton className="transform hover:scale-105 transition-transform duration-300">
+              <AnimatedButton className="transform text-sm rounded-full hover:scale-105 transition-transform duration-300">
                 View My Work
               </AnimatedButton>
-              <AnimatedButton className="bg-transparent border-2 border-[#fa0f69] hover:border-[#fa0f69] transform hover:scale-105 transition-transform duration-300">
+              <AnimatedButton className="bg-transparent text-sm border-2 rounded-full border-[#fa0f69] hover:border-[#fa0f69] transform hover:scale-105 transition-transform duration-300">
                 Get In Touch
               </AnimatedButton>
             </motion.div>
@@ -141,9 +139,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2 }}
-              className="pt-8 flex flex-wrap gap-2 items-center"
+              className="pt-3 md:pt-8 flex flex-wrap gap-2 items-center"
             >
-              <p className="text-neutral-400 mb-4 text-lg">Follow me on:</p>
+              <p className="text-neutral-400 md:mb-4 text-lg">Follow me:</p>
               <div className="flex justify-center sm:justify-start">
                 <FloatingDock
                   items={socialLinks}

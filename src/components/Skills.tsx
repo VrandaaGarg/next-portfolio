@@ -2,61 +2,56 @@
 
 import { motion } from "framer-motion";
 import SkillCard from "@/components/ui/SkillCard";
+import { Hash, GitBranch } from "lucide-react";
+import { FaJava, FaCss3Alt, FaHtml5, FaReact, FaPython } from "react-icons/fa6";
 import {
-  // Frontend
-  Code2,
-  Palette,
-  Zap,
-  Wind,
-
-  // Backend & Database
-  Database,
-  Server,
-  Cloud,
-  Lock,
-
-  // Languages
-  FileCode2,
-  Coffee,
-  Hash,
-
-  // Tools & Others
-  Github,
-  GitBranch,
-  Upload,
-  Terminal,
-} from "lucide-react";
+  SiJavascript,
+  SiFramer,
+  SiExpress,
+  SiMongodb,
+  SiFirebase,
+  SiAppwrite,
+  SiVercel,
+  SiDjango,
+  SiGithub,
+} from "react-icons/si";
+import { BiLogoTypescript } from "react-icons/bi";
+import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
+import { DiNodejs } from "react-icons/di";
+import { GrMysql } from "react-icons/gr";
+import { TbBrandCpp, TbBrandVscode } from "react-icons/tb";
 
 const skillsData = {
   "Frontend Development": [
-    { name: "HTML5", icon: Code2, proficiency: 95 },
-    { name: "CSS3", icon: Palette, proficiency: 90 },
-    { name: "JavaScript", icon: FileCode2, proficiency: 88 },
-    { name: "TypeScript", icon: FileCode2, proficiency: 85 },
-    { name: "React.js", icon: Zap, proficiency: 92 },
-    { name: "Next.js", icon: Zap, proficiency: 88 },
-    { name: "Tailwind CSS", icon: Wind, proficiency: 95 },
-    { name: "Framer Motion", icon: Zap, proficiency: 80 },
+    { name: "HTML5", icon: FaHtml5, proficiency: 95 },
+    { name: "CSS3", icon: FaCss3Alt, proficiency: 90 },
+    { name: "JavaScript", icon: SiJavascript, proficiency: 88 },
+    { name: "TypeScript", icon: BiLogoTypescript, proficiency: 85 },
+    { name: "React.js", icon: FaReact, proficiency: 92 },
+    { name: "Next.js", icon: RiNextjsFill, proficiency: 88 },
+    { name: "Tailwind CSS", icon: RiTailwindCssFill, proficiency: 95 },
+    { name: "Framer Motion", icon: SiFramer, proficiency: 80 },
   ],
   "Backend & Database": [
-    { name: "Node.js", icon: Server, proficiency: 85 },
-    { name: "Express.js", icon: Server, proficiency: 80 },
-    { name: "MongoDB", icon: Database, proficiency: 85 },
-    { name: "Firebase", icon: Cloud, proficiency: 82 },
-    { name: "Appwrite", icon: Lock, proficiency: 75 },
-    { name: "MySQL", icon: Database, proficiency: 78 },
+    { name: "Node.js", icon: DiNodejs, proficiency: 85 },
+    { name: "Express.js", icon: SiExpress, proficiency: 80 },
+    { name: "MongoDB", icon: SiMongodb, proficiency: 85 },
+    { name: "Firebase", icon: SiFirebase, proficiency: 82 },
+    { name: "Appwrite", icon: SiAppwrite, proficiency: 75 },
+    { name: "MySQL", icon: GrMysql, proficiency: 78 },
+    { name: "Django", icon: SiDjango, proficiency: 80 },
   ],
   "Programming Languages": [
-    { name: "C++", icon: Hash, proficiency: 85 },
+    { name: "C++", icon: TbBrandCpp, proficiency: 85 },
     { name: "C", icon: Hash, proficiency: 80 },
-    { name: "Java", icon: Coffee, proficiency: 82 },
-    { name: "Python", icon: FileCode2, proficiency: 85 },
+    { name: "Java", icon: FaJava, proficiency: 82 },
+    { name: "Python", icon: FaPython, proficiency: 85 },
   ],
   "Tools & Deployment": [
     { name: "Git", icon: GitBranch, proficiency: 90 },
-    { name: "GitHub", icon: Github, proficiency: 92 },
-    { name: "Vercel", icon: Upload, proficiency: 88 },
-    { name: "VS Code", icon: Terminal, proficiency: 95 },
+    { name: "GitHub", icon: SiGithub, proficiency: 92 },
+    { name: "Vercel", icon: SiVercel, proficiency: 88 },
+    { name: "VS Code", icon: TbBrandVscode, proficiency: 95 },
   ],
 };
 

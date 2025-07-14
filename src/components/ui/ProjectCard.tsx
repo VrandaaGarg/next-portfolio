@@ -3,9 +3,9 @@
 import type * as React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { LuArrowUpRight, LuGithub, LuExternalLink } from "react-icons/lu";
+import { LuArrowUpRight, LuGithub, LuExternalLink, LuX } from "react-icons/lu";
 import { Project } from "@/data/projectsData";
 import { BorderBeam } from "./animated-border-beam";
 
@@ -16,6 +16,19 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, className }: ProjectCardProps) => {
   const [isHovered, setHovered] = useState(false);
+  const [isMobileExpanded, setIsMobileExpanded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <motion.div
@@ -29,8 +42,8 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       whileHover={{ scale: 1.02 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => !isMobile && setHovered(true)}
+      onMouseLeave={() => !isMobile && setHovered(false)}
     >
       {/* First Animated Border Beam - Purple to Blue */}
       <BorderBeam
@@ -118,19 +131,42 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
       </div>
 
       <motion.div
-        className="absolute bottom-2 left-2 right-2 rounded-t-2xl border-t border-[#ff4081]/80 bg-white/95 px-6 pb-5 pt-3 backdrop-blur-sm dark:border-pink-800/80 dark:bg-neutral-950/95 z-30"
+        className="absolute bottom-2 left-2 right-2 rounded-t-2xl border-t border-[#ff4081]/80 bg-white/95 px-3.5 md:px-6 pb-3 md:pb-5 pt-3 backdrop-blur-sm dark:border-pink-800/80 dark:bg-neutral-950/95 z-30"
         initial={{ y: "100%" }}
         animate={{
-          y: isHovered ? 0 : "calc(100% - 53px)",
+          y: isMobile
+            ? isMobileExpanded
+              ? 0
+              : "calc(100% - 48px)"
+            : isHovered
+            ? 0
+            : "calc(100% - 48px)",
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div className="text-neutral-900 dark:text-neutral-100">
           <div className="mb-2 flex items-center justify-between text-md font-semibold text-neutral-900 dark:text-neutral-100">
             <span>Project Details</span>
-            <span>
-              <LuArrowUpRight />
-            </span>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsMobileExpanded(!isMobileExpanded);
+              }}
+              className="md:pointer-events-none p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200"
+            >
+              {/* Show close button on small screens when expanded, arrow otherwise */}
+              <span className="md:hidden">
+                {isMobile && isMobileExpanded ? (
+                  <LuX className="text-pink-700" />
+                ) : (
+                  <LuArrowUpRight />
+                )}
+              </span>
+              {/* Always show arrow on medium+ screens */}
+              <span className="hidden md:inline">
+                <LuArrowUpRight />
+              </span>
+            </button>
           </div>
           <p className="mb-3 text-sm font-medium leading-relaxed text-neutral-600 dark:text-neutral-400">
             {project.description}
@@ -159,7 +195,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               <Link
                 target="_blank"
                 href={project.liveDemoUrl}
-                className="flex w-full items-center gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-4 py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
+                className="flex w-full items-center gap-1.5 md:gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-2 py-2 md:px-4 md:py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
               >
                 <span className="flex h-5 w-5 items-center justify-center text-neutral-500 dark:text-neutral-400">
                   <LuExternalLink />
@@ -170,7 +206,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <Link
               target="_blank"
               href={project.githubUrl}
-              className="flex w-full items-center gap-3 justify-center rounded-xl border border-neutral-200/60 bg-pink-50/80 px-4 py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
+              className="flex w-full mb-2 items-center gap-1.5 md:gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-2 py-2 md:px-4 md:py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
             >
               <span className="flex h-5 w-5 items-center justify-center text-neutral-500 dark:text-neutral-400">
                 <LuGithub />

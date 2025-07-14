@@ -54,9 +54,9 @@ export default function Projects() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-center"
           >
-            <div className="inline-flex justify-end items-center gap-2 px-8 py-4 rounded-2xl bg-neutral-900 dark:bg-[#ff4081] text-white dark:text-neutral-900 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group">
-              <span>See All Projects</span>
-              <LuArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+            <div className="inline-flex justify-end items-center gap-2 px-4 md:px-8 py-2.5 md:py-4 rounded-full md:rounded-2xl bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] text-white dark:text-neutral-900 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+              <span className="text-white">See All Projects</span>
+              <LuArrowRight className="w-5 h-5 text-white transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </motion.button>
         </div>
