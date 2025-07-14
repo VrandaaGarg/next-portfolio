@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SkillCard from "@/components/ui/SkillCard";
-import { Hash, GitBranch, Pin, Sparkles } from "lucide-react";
+import { Hash, GitBranch, Sparkles } from "lucide-react";
 import { FaJava, FaCss3Alt, FaHtml5, FaReact, FaPython } from "react-icons/fa6";
 import {
   SiJavascript,

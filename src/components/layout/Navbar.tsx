@@ -12,7 +12,6 @@ import {
   Newspaper,
 } from "lucide-react";
 import { BsFillHeartFill } from "react-icons/bs";
-import { GrResume } from "react-icons/gr";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);

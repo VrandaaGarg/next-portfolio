@@ -111,7 +111,7 @@ export default function Footer() {
 
             {/* Right side - Social links */}
             <div className="flex gap-4">
-              {socialLinks.map((social, index) => {
+              {socialLinks.map((social) => {
                 const IconComponent = social.icon;
                 return (
                   <motion.a
