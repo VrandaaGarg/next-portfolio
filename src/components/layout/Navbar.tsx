@@ -3,8 +3,16 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, FolderOpen, ExternalLink } from "lucide-react";
+import {
+  Menu,
+  X,
+  Home,
+  FolderOpen,
+  ExternalLink,
+  Newspaper,
+} from "lucide-react";
 import { BsFillHeartFill } from "react-icons/bs";
+import { GrResume } from "react-icons/gr";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -115,8 +123,14 @@ export default function Navbar() {
               );
             })}
 
-            <button className="bg-gradient-to-br text-lg from-[#c11853] to-[#d44575] text-white px-4 py-2 rounded-full">
-              Resume
+            <button
+              onClick={() => {
+                window.open("https://vrandagarg.in/VrandaResume.pdf", "_blank");
+              }}
+              className="bg-gradient-to-br hover:shadow-lg hover:shadow-[#fa0f69]/25 transition-all duration-300 cursor-pointer flex gap-2 items-center justify-center text-lg from-[#c11853] to-[#d44575] hover:from-[#ef2b6c] hover:to-[#810832] text-white  md:px-6 py-1.5 rounded-4xl"
+            >
+              <span> Resume</span>{" "}
+              <Newspaper size={18} className="hover:rotate-12 duration-300" />
             </button>
           </motion.div>
 
@@ -202,6 +216,19 @@ export default function Navbar() {
                     </motion.div>
                   );
                 })}
+
+                <button
+                  onClick={() => {
+                    window.open(
+                      "https://vrandagarg.in/VrandaResume.pdf",
+                      "_blank"
+                    );
+                  }}
+                  className="bg-gradient-to-br cursor-pointer flex gap-2 items-center justify-center text-lg from-[#ff4c88] to-[#810832] text-white px-4 py-1.5 rounded-xl"
+                >
+                  <span> Resume</span>{" "}
+                  <Newspaper className="text-xl hover:rotate-12 duration-300" />
+                </button>
               </div>
             </div>
           </motion.div>

@@ -33,7 +33,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
   return (
     <motion.div
       className={cn(
-        "group relative md:h-[500px] h-[450px] w-[350px] overflow-hidden rounded-2xl p-0 md:w-[700px]",
+        "group relative md:h-[500px] h-[410px] w-[350px] overflow-hidden rounded-2xl p-0 md:w-[700px]",
         "border border-neutral-200/60 bg-white/50 backdrop-blur-sm hover:cursor-pointer",
         "dark:border-pink-800/60 dark:bg-neutral-950/50",
         "shadow-sm transition-shadow duration-300 hover:shadow-lg",
@@ -177,7 +177,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <p className="mb-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
               Tech Stack:
             </p>
-            <div className="flex flex-wrap gap-1">
+            <div className=" flex-wrap gap-1 hidden md:flex">
               {project.techStack.map((tech, index) => (
                 <span
                   key={index}
@@ -186,6 +186,24 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                   {tech}
                 </span>
               ))}
+            </div>
+
+            {/** Mobile View */}
+            <div className=" flex-wrap gap-2 flex md:hidden">
+              {project.techStack.slice(0, 3).map((tech, index) => (
+                <span
+                  key={index}
+                  className="rounded-md bg-neutral-100 px-2 py-0.5 md:py-1 text-sm font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+                >
+                  {tech}
+                </span>
+              ))}
+
+              {project.techStack.length > 3 && (
+                <span className="rounded-md bg-neutral-200 px-2 py-0.5 md:py-1 text-sm font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">
+                  +{project.techStack.length - 3} more
+                </span>
+              )}
             </div>
           </div>
 

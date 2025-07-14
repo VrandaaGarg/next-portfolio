@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import SkillCard from "@/components/ui/SkillCard";
-import { Hash, GitBranch } from "lucide-react";
+import { Hash, GitBranch, Pin, Sparkles } from "lucide-react";
 import { FaJava, FaCss3Alt, FaHtml5, FaReact, FaPython } from "react-icons/fa6";
 import {
   SiJavascript,
@@ -90,7 +90,14 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            My <span className="text-gradient-primary">Skills</span>
+            My <span className="text-gradient-primary">Skills</span>{" "}
+            <motion.span
+              animate={{ rotate: [0, 15, -15, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="inline-block ml-3"
+            >
+              <Sparkles className="text-[#ff4081] h-6 w-6 md:h-10 md:w-10" />
+            </motion.span>
           </h2>
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
             A comprehensive overview of the technologies and tools I work with

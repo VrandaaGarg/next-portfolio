@@ -376,7 +376,7 @@ export default function GitHubSection() {
                   <div className="relative z-10">
                     <div className="flex items-center justify-center gap-3 mb-3">
                       <motion.div
-                        animate={{ scale: [1, 1.1, 1] }}
+                        animate={{ rotate: [0, 10, -10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                         className="w-8 h-8 rounded-full bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] p-2"
                       >
@@ -437,12 +437,8 @@ export default function GitHubSection() {
                   <div className="relative z-10">
                     <div className="flex items-center justify-center gap-3 mb-3">
                       <motion.div
-                        animate={{ scale: [1, 1.1, 1] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          delay: 0.5,
-                        }}
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
                         className="w-8 h-8 rounded-full bg-gradient-to-r from-[#ff1b6b] to-[#ff4081] p-2"
                       >
                         <Zap className="w-4 h-4 text-white" />

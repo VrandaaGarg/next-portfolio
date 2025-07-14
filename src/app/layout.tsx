@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import AnimatedBackground from "@/components/animations/AnimatedBackground";
 import Script from "next/script";
+import Footer from "@/components/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,6 +39,7 @@ export default function RootLayout({
         <div className="relative z-20">
           <Navbar />
           {children}
+          <Footer />
         </div>
 
         <Script

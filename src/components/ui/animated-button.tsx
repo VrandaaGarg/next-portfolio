@@ -24,9 +24,6 @@ const AnimatedButton = forwardRef<HTMLButtonElement, AnimatedButtonProps>(
         )}
         {...props}
       >
-        {/* Background glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#fa0f69] to-[#ff1b6b] opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
-
         {/* Content */}
         <span className="relative z-10">{children}</span>
       </motion.button>

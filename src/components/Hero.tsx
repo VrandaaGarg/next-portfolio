@@ -11,6 +11,16 @@ import { FaInstagram } from "react-icons/fa6";
 import { RiTwitterXLine } from "react-icons/ri";
 
 export default function Hero() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   const socialLinks = [
     {
       title: "Twitter",
@@ -123,10 +133,16 @@ export default function Hero() {
               transition={{ delay: 1 }}
               className="flex flex-row gap-4 "
             >
-              <AnimatedButton className="transform text-sm rounded-full hover:scale-105 transition-transform duration-300">
+              <AnimatedButton
+                onClick={() => scrollToSection("projects")}
+                className="transform text-sm rounded-full hover:bg-gradient-to-br hover:from-[#fd3984] hover:to-[#a6073f] hover:scale-105 transition-transform duration-300"
+              >
                 View My Work
               </AnimatedButton>
-              <AnimatedButton className="bg-transparent text-sm border-2 rounded-full border-[#fa0f69] hover:border-[#fa0f69] transform hover:scale-105 transition-transform duration-300">
+              <AnimatedButton
+                onClick={() => scrollToSection("contact")}
+                className="bg-transparent text-sm border-2 rounded-full hover:bg-[#fa0f69]/15 border-[#fa0f69] hover:border-[#fa0f69] transform hover:scale-105 transition-transform duration-300"
+              >
                 Get In Touch
               </AnimatedButton>
             </motion.div>
