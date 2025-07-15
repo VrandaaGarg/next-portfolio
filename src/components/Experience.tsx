@@ -232,9 +232,9 @@ export default function ExperienceTimeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="text-center mt-16 relative z-10"
+          className="text-center md:mt-16 relative z-10"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-800/20 rounded-full text-pink-700 dark:text-pink-300 font-medium border border-pink-200/60 dark:border-pink-800/60 shadow-lg">
+          <div className="inline-flex items-center gap-1 md:gap-3 px-3 md:px-6 py-1.5 md:py-4 bg-gradient-to-r from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-800/20 rounded-full text-pink-700 dark:text-pink-300 font-medium border border-pink-200/60 dark:border-pink-800/60 shadow-lg">
             <motion.span
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
