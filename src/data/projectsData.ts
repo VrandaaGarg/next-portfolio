@@ -45,7 +45,7 @@ export const projectsData: Project[] = [
       "OpenAI API",
       "Firebase",
     ],
-    liveDemoUrl: "https://smartbite.vrandagarg.in/",
+    liveDemoUrl: "https://resumate.vrandagarg.in/",
     githubUrl: "https://github.com/VrandaaGarg/ResuMate",
   },
   {
@@ -56,7 +56,7 @@ export const projectsData: Project[] = [
     description:
       "SmartBite is a full-stack food ordering app for single restaurants, offering seamless menu browsing, order management, and customer tracking—all",
     techStack: ["React JS", "JavaScript", "Appwrite", "Email JS"],
-    liveDemoUrl: "https://weather-dashboard-demo.vercel.app",
+    liveDemoUrl: "https://smartbite.vrandagarg.in/",
     githubUrl: "https://github.com/VrandaaGarg/smartbite",
   },
   {
@@ -124,7 +124,7 @@ export const projectsData: Project[] = [
       "Framer Motion",
       "Lucide Icons",
     ],
-    liveDemoUrl: "https://finwise.ayush-sharma.in/",
-    githubUrl: "https://github.com/Glucon-D/FinWise",
+    liveDemoUrl: "https://vrandagarg.in/",
+    githubUrl: "https://github.com/VrandaaGarg/next-portfolio",
   },
 ];
