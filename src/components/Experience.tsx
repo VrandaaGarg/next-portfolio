@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { FaAward, FaTrophy, FaMedal } from "react-icons/fa6";
 import { HiAcademicCap, HiStar } from "react-icons/hi2";
-import { LuCodeXml, LuCalendar, LuBuilding, LuUser } from "react-icons/lu";
+import { LuCodeXml, LuBuilding, LuUser } from "react-icons/lu";
 import { ShineBorder } from "./ui/shine-border";
 import { useState } from "react";
 import { experienceData, Experience } from "@/data/experienceData";
@@ -137,10 +137,10 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 text-pink-500 dark:text-pink-300 mb-4 justify-center md:justify-start">
+                {/* <div className="flex items-center gap-2 text-pink-500 dark:text-pink-300 mb-4 justify-center md:justify-start">
                   <LuCalendar className="w-4 h-4" />
                   <span className="text-sm font-medium">{exp.duration}</span>
-                </div>
+                </div> */}
 
                 <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
                   {exp.description}

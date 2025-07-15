@@ -35,9 +35,13 @@ export default function Navbar() {
   return (
     <motion.nav
       className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.8,
+        ease: "easeOut",
+        delay: 0.2,
+      }}
     >
       <motion.div
         className={`bg-[#280512]/20 rounded-full border backdrop-blur-xl ${
@@ -45,6 +49,14 @@ export default function Navbar() {
             ? "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/15 border-r-[var(--primary-pink)]/15 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10"
             : "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/10 border-r-[var(--primary-pink)]/10 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10"
         }`}
+        initial={{
+          width: "95vw",
+          maxWidth: "1200px",
+          paddingLeft: "1rem",
+          paddingRight: "1rem",
+          paddingTop: "0.2rem",
+          paddingBottom: "0.2rem",
+        }}
         animate={{
           width: isScrolled ? "90vw" : "95vw",
           maxWidth: isScrolled ? "900px" : "1200px",
@@ -88,9 +100,13 @@ export default function Navbar() {
               return (
                 <motion.div
                   key={item.name}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.4 + index * 0.15,
+                    ease: "easeOut",
+                  }}
                 >
                   <Link
                     href={item.href}
@@ -122,15 +138,22 @@ export default function Navbar() {
               );
             })}
 
-            <button
+            <motion.button
               onClick={() => {
                 window.open("https://vrandagarg.in/VrandaResume.pdf", "_blank");
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.7,
+                ease: "easeOut",
               }}
               className="bg-gradient-to-br hover:shadow-lg hover:shadow-[#fa0f69]/25 transition-all duration-300 cursor-pointer flex gap-2 items-center justify-center text-lg from-[#c11853] to-[#d44575] hover:from-[#ef2b6c] hover:to-[#810832] text-white  md:px-6 py-1.5 rounded-4xl"
             >
               <span> Resume</span>{" "}
               <Newspaper size={18} className="hover:rotate-12 duration-300" />
-            </button>
+            </motion.button>
           </motion.div>
 
           {/* Mobile Menu Button */}
@@ -185,9 +208,13 @@ export default function Navbar() {
                   return (
                     <motion.div
                       key={item.name}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 0.5,
+                        delay: index * 0.1,
+                        ease: "easeOut",
+                      }}
                     >
                       <Link
                         href={item.href}
