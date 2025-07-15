@@ -29,7 +29,7 @@ export const experienceData: Experience[] = [
       "Groq API",
       "Appwrite",
     ],
-    logo: "https://vrandagarg.in/hackerzstreet.png",
+    logo: "https://res.cloudinary.com/dyetf2h9n/image/upload/q_60/v1752582423/hackerzstreet_pvfr38.png",
     left: true,
     type: "achievement",
     iconType: "trophy",
@@ -57,7 +57,7 @@ export const experienceData: Experience[] = [
     description:
       "I secured 3rd position in the BrandIT competition organized by IEEE, where I developed a website named EvoVatika showcasing modern web development skills.",
     technologies: ["React", "Tailwind CSS", "Javascript", "HTML", "CSS"],
-    logo: "https://vrandagarg.in/brandit.png",
+    logo: "https://res.cloudinary.com/dyetf2h9n/image/upload/q_60/v1752582424/brandit_dqvxcn.png",
     left: true,
     type: "achievement",
     iconType: "medal",
