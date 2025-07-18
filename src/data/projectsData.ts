@@ -12,6 +12,25 @@ export interface Project {
 export const projectsData: Project[] = [
   {
     id: "1",
+    name: "ResuMate",
+    image:
+      "https://res.cloudinary.com/dyetf2h9n/image/upload/q_60/v1752831819/resumate_n3e4wo.png", // Using placeholder image
+    icon: "📄",
+    description:
+      "ResuMate is an AI-powered platform for building professional, ATS-friendly resumes with live editing, smart formatting, and real-time feedback.",
+    techStack: [
+      "React",
+      "Tailwind CSS",
+      "Framer Motion",
+      "OpenAI API",
+      "Firebase",
+      "Appwrite",
+    ],
+    liveDemoUrl: "https://resumate.vrandagarg.me/",
+    githubUrl: "https://github.com/VrandaaGarg/ResuMate",
+  },
+  {
+    id: "2",
     name: "AV Chat",
     image:
       "https://res.cloudinary.com/dyetf2h9n/image/upload/q_60/v1752582425/avchat_wixr8v.png", // Using placeholder image
@@ -29,24 +48,6 @@ export const projectsData: Project[] = [
     ],
     liveDemoUrl: "https://avchat.xyz",
     githubUrl: "https://github.com/cyberboyayush/AVChat",
-  },
-  {
-    id: "2",
-    name: "ResuMate",
-    image:
-      "https://res.cloudinary.com/dyetf2h9n/image/upload/q_60/v1752582425/resumate_n3e4wo.png", // Using placeholder image
-    icon: "📄",
-    description:
-      "ResuMate is an AI-powered platform for building professional, ATS-friendly resumes with live editing, smart formatting, and real-time feedback.",
-    techStack: [
-      "React",
-      "Tailwind CSS",
-      "Framer Motion",
-      "OpenAI API",
-      "Firebase",
-    ],
-    liveDemoUrl: "https://resumate.vrandagarg.in/",
-    githubUrl: "https://github.com/VrandaaGarg/ResuMate",
   },
   {
     id: "3",
