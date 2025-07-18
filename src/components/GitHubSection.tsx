@@ -391,7 +391,6 @@ export default function GitHubSection() {
                       <picture>
                         <source
                           srcSet={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true&bg_color=00000000&text_color=ffffff&icon_color=fa0f69&title_color=ff1b6b&border_color=fa0f69&hide_border=true`}
-                          media="(prefers-color-scheme: dark)"
                         />
                         <img
                           src={`https://github-readme-stats.vercel.app/api?username=${GITHUB_USERNAME}&show_icons=true`}
@@ -452,7 +451,6 @@ export default function GitHubSection() {
                       <picture>
                         <source
                           srcSet={`https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=dark&hide_border=true&background=00000000&ring=fa0f69&currStreakLabel=ff1b6b&fire=ff4081&currStreakNum=ffffff&sideNums=ffffff&sideLabels=a1a1aa&dates=a1a1aa`}
-                          media="(prefers-color-scheme: dark)"
                         />
                         <img
                           src={`https://nirzak-streak-stats.vercel.app?user=${GITHUB_USERNAME}&theme=light`}
