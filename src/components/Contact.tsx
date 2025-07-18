@@ -21,7 +21,7 @@ export default function Contact() {
           transition={{ duration: 0.6 }}
           className="text-center mb-6 md:mb-16 mx-3.5"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-neutral-900 dark:text-neutral-100 mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-neutral-100 mb-4">
             Let&apos;s <span className="text-[#ff4081]">Connect</span>{" "}
             <motion.span
               animate={{ rotate: [0, 15, -15, 0] }}
@@ -31,7 +31,7 @@ export default function Contact() {
               <Phone className="text-[#ff4081] h-5 w-5 md:h-10 md:w-10" />
             </motion.span>
           </h2>
-          <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto">
             Discover some of my latest work and creative solutions
           </p>
         </motion.div>

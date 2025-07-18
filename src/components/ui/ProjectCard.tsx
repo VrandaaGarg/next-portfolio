@@ -34,8 +34,8 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
     <motion.div
       className={cn(
         "group relative md:h-[500px] h-[410px] w-[350px] overflow-hidden rounded-2xl p-0 md:w-[700px]",
-        "border border-neutral-200/60 bg-white/50 backdrop-blur-sm hover:cursor-pointer",
-        "dark:border-pink-800/60 dark:bg-neutral-950/50",
+        "border   backdrop-blur-sm hover:cursor-pointer",
+        "border-pink-800/60 bg-neutral-950/50",
         "shadow-sm transition-shadow duration-300 hover:shadow-lg",
         className
       )}
@@ -77,12 +77,12 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="mb-1 flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg border-pink-500/30 border-1 bg-neutral-100 text-neutral-600 dark:bg-pink-800/35 dark:text-neutral-400">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg border-pink-500/30 border-1 :bg-pink-800/35 text-neutral-400">
                 {project.icon}
               </div>
-              <div className="h-px flex-1 bg-gradient-to-r from-[#ff4081] to-[#ff4081]/50 dark:from-neutral-800"></div>
+              <div className="h-px flex-1 bg-gradient-to-r  to-[#ff4081]/50 from-neutral-800"></div>
             </div>
-            <h3 className="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+            <h3 className="text-xl font-semibold tracking-tight text-neutral-100">
               {project.name}
             </h3>
           </div>
@@ -93,7 +93,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <motion.img
               src={project.image}
               alt={project.name}
-              className="absolute right-4 top-6 h-[72px] w-[72px] aspect-square object-cover rounded-sm shadow-lg ring-2 ring-white dark:ring-neutral-900 z-20"
+              className="absolute right-4 top-6 h-[72px] w-[72px] aspect-square object-cover rounded-sm shadow-lg ring-2 ring-neutral-900 z-20"
               width={500}
               height={500}
               layoutId={`project-image-${project.id}`}
@@ -101,7 +101,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             />
 
             <motion.div
-              className="absolute right-[14px] top-[21px] h-[78px] w-[77px] rounded-sm border border-dashed border-neutral-400/80 bg-transparent dark:border-neutral-600/80 z-20"
+              className="absolute right-[14px] top-[21px] h-[78px] w-[77px] rounded-sm border border-dashed  bg-transparent border-neutral-600/80 z-20"
               initial={{ opacity: 0, scale: 1.6, filter: "blur(4px)" }}
               animate={{
                 opacity: 1,
@@ -120,7 +120,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <motion.img
               src={project.image}
               alt={project.name}
-              className="w-[500] object-cover rounded-2xl border-4 border-white shadow-xl ring-1 ring-neutral-200/50 dark:border-neutral-900 dark:ring-neutral-800/50"
+              className="w-[500] object-cover rounded-2xl border-4  shadow-xl ring-1  border-neutral-900 ring-neutral-800/50"
               width={500}
               height={500}
               layoutId={`project-image-${project.id}`}
@@ -131,7 +131,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
       </div>
 
       <motion.div
-        className="absolute bottom-2 left-2 right-2 rounded-t-2xl border-t border-[#ff4081]/80 bg-white/95 px-3.5 md:px-6 pb-3 md:pb-5 pt-3 backdrop-blur-sm dark:border-pink-800/80 dark:bg-neutral-950/95 z-30"
+        className="absolute bottom-2 left-2 right-2 rounded-t-2xl border-t   px-3.5 md:px-6 pb-3 md:pb-5 pt-3 backdrop-blur-sm border-pink-800/80 bg-neutral-950/95 z-30"
         initial={{ y: "100%" }}
         animate={{
           y: isMobile
@@ -144,15 +144,15 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        <div className="text-neutral-900 dark:text-neutral-100">
-          <div className="mb-1.5 md:mb-2 flex items-center justify-between text-md font-semibold text-neutral-900 dark:text-neutral-100">
+        <div className="text-neutral-100">
+          <div className="mb-1.5 md:mb-2 flex items-center justify-between text-md font-semibold text-neutral-100">
             <span>Project Details</span>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setIsMobileExpanded(!isMobileExpanded);
               }}
-              className="md:pointer-events-none p-1 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200"
+              className="md:pointer-events-none p-1 rounded-md hover:bg-neutral-800 transition-colors duration-200"
             >
               {/* Show close button on small screens when expanded, arrow otherwise */}
               <span className="md:hidden">
@@ -168,20 +168,20 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               </span>
             </button>
           </div>
-          <p className="mb-1.5 md:mb-3 text-sm font-medium leading-relaxed text-neutral-600 dark:text-neutral-400">
+          <p className="mb-1.5 md:mb-3 text-sm font-medium leading-relaxed text-neutral-400">
             {project.description}
           </p>
 
           {/* Tech Stack */}
           <div className="mb-1.5 md:mb-3">
-            <p className="mb-2 text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+            <p className="mb-2 text-sm font-semibold text-neutral-300">
               Tech Stack:
             </p>
             <div className=" flex-wrap gap-1 hidden md:flex">
               {project.techStack.map((tech, index) => (
                 <span
                   key={index}
-                  className="rounded-md bg-neutral-100 px-2 py-0.5 md:py-1 text-sm font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+                  className="rounded-md  px-2 py-0.5 md:py-1 text-sm font-medium bg-neutral-800 text-neutral-400"
                 >
                   {tech}
                 </span>
@@ -193,14 +193,14 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               {project.techStack.slice(0, 3).map((tech, index) => (
                 <span
                   key={index}
-                  className="rounded-md bg-neutral-100 px-2 py-0.5 md:py-1 text-sm font-medium text-neutral-600 dark:bg-neutral-800 dark:text-neutral-400"
+                  className="rounded-md  px-2 py-0.5 md:py-1 text-sm font-medium bg-neutral-800 text-neutral-400"
                 >
                   {tech}
                 </span>
               ))}
 
               {project.techStack.length > 3 && (
-                <span className="rounded-md bg-neutral-200 px-2 py-0.5 md:py-1 text-sm font-medium text-neutral-700 dark:bg-neutral-700 dark:text-neutral-200">
+                <span className="rounded-md  px-2 py-0.5 md:py-1 text-sm font-medium bg-neutral-700 text-neutral-200">
                   +{project.techStack.length - 3} more
                 </span>
               )}
@@ -213,9 +213,9 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               <Link
                 target="_blank"
                 href={project.liveDemoUrl}
-                className="flex w-full items-center gap-1.5 md:gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-2 py-2 md:px-4 md:py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
+                className="flex w-full items-center gap-1.5 md:gap-3 justify-center  rounded-xl border   px-2 py-2 md:px-4 md:py-3 text-sm font-medium transition-all duration-200  border-neutral-800/60 bg-pink-500/20 text-neutral-300 hover:border-neutral-700 hover:bg-pink-700/80 hover:text-neutral-100"
               >
-                <span className="flex h-5 w-5 items-center justify-center text-neutral-500 dark:text-neutral-400">
+                <span className="flex h-5 w-5 items-center justify-center text-neutral-400">
                   <LuExternalLink />
                 </span>
                 Live Demo
@@ -224,9 +224,9 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             <Link
               target="_blank"
               href={project.githubUrl}
-              className="flex w-full items-center gap-1.5 md:gap-3 justify-center  rounded-xl border border-neutral-200/60 bg-pink-50/80 px-2 py-2 md:px-4 md:py-3 text-sm font-medium text-neutral-700 transition-all duration-200 hover:border-neutral-300 hover:bg-pink-100/80 hover:text-neutral-900 dark:border-neutral-800/60 dark:bg-pink-500/20 dark:text-neutral-300 dark:hover:border-neutral-700 dark:hover:bg-pink-700/80 dark:hover:text-neutral-100"
+              className="flex w-full items-center gap-1.5 md:gap-3 justify-center  rounded-xl border px-2 py-2 md:px-4 md:py-3 text-sm font-medium  transition-all duration-200  border-neutral-800/60 bg-pink-500/20 text-neutral-300 hover:border-neutral-700 hover:bg-pink-700/80 hover:text-neutral-100"
             >
-              <span className="flex h-5 w-5 items-center justify-center text-neutral-500 dark:text-neutral-400">
+              <span className="flex h-5 w-5 items-center justify-center  text-neutral-400">
                 <LuGithub />
               </span>
               View Code

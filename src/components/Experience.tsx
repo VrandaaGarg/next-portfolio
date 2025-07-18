@@ -88,7 +88,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
             whileHover={{ scale: 1.02, y: -5 }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="relative bg-white/50 backdrop-blur-sm dark:bg-neutral-950/50 border border-pink-200/60 dark:border-pink-800/60 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+            className="relative  backdrop-blur-sm bg-neutral-950/50 border border-pink-800/60 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
             {/* Animated Shine Border */}
             <ShineBorder
@@ -102,7 +102,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
 
             <div className="flex flex-col md:flex-row items-start gap-4">
               {/* Logo */}
-              <div className="w-20 h-20 mx-auto md:mx-0 rounded-xl overflow-hidden flex-shrink-0 bg-pink-100/80 dark:bg-pink-900/30 p-3 border border-pink-200/40 dark:border-pink-800/40">
+              <div className="w-20 h-20 mx-auto md:mx-0 rounded-xl overflow-hidden flex-shrink-0 bg-pink-900/30 p-3 border border-pink-800/40">
                 <motion.img
                   src={exp.logo}
                   alt={exp.company}
@@ -115,7 +115,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
               {/* Content */}
               <div className="flex-1 text-center md:text-left">
                 <motion.h3
-                  className="text-xl font-bold text-neutral-900 dark:text-neutral-100 mb-2"
+                  className="text-xl font-bold text-neutral-100 mb-2"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-100px" }}
@@ -125,24 +125,19 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                 </motion.h3>
 
                 <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
-                  <div className="flex items-center gap-2 text-pink-600 dark:text-pink-400 justify-center md:justify-start">
+                  <div className="flex items-center gap-2 text-pink-400 justify-center md:justify-start">
                     <LuUser className="w-4 h-4" />
                     <span className="text-sm font-medium">{exp.role}</span>
                   </div>
                   {exp.company && (
-                    <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400 justify-center md:justify-start">
+                    <div className="flex items-center gap-2 text-neutral-400 justify-center md:justify-start">
                       <LuBuilding className="w-4 h-4" />
                       <span className="text-sm">{exp.company}</span>
                     </div>
                   )}
                 </div>
 
-                {/* <div className="flex items-center gap-2 text-pink-500 dark:text-pink-300 mb-4 justify-center md:justify-start">
-                  <LuCalendar className="w-4 h-4" />
-                  <span className="text-sm font-medium">{exp.duration}</span>
-                </div> */}
-
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
                   {exp.description}
                 </p>
 
@@ -157,7 +152,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
                     {exp.technologies.map((tech: string, idx: number) => (
                       <motion.span
                         key={idx}
-                        className="px-3 py-1 text-xs rounded-full bg-pink-100 text-pink-700 dark:bg-pink-900/30 dark:text-pink-300 border border-pink-200/40 dark:border-pink-800/40 font-medium"
+                        className="px-3 py-1 text-xs rounded-full bg-pink-900/30 text-pink-300 border border-pink-800/40 font-medium"
                         whileHover={{ scale: 1.05 }}
                         transition={{ duration: 0.2 }}
                       >
@@ -178,7 +173,7 @@ const ExperienceCard = ({ exp, index }: { exp: Experience; index: number }) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4, delay: 0.3 }}
-        className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-pink-50/90 dark:bg-pink-900/30 backdrop-blur-sm border border-pink-200/60 dark:border-pink-800/60 text-pink-700 dark:text-pink-300 px-4 py-2 rounded-full text-xs font-medium shadow-lg z-20"
+        className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-pink-900/30 backdrop-blur-sm border border-pink-800/60 text-pink-300 px-4 py-2 rounded-full text-xs font-medium shadow-lg z-20"
       >
         {exp.duration}
       </motion.div>
@@ -208,7 +203,7 @@ export default function ExperienceTimeline() {
               <FaAward className="text-[#ff4081]" />
             </motion.span>
           </h2>
-          <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
             My journey through various achievements, experiences, and milestones
           </p>
         </motion.div>
@@ -234,7 +229,7 @@ export default function ExperienceTimeline() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="text-center md:mt-16 relative z-10"
         >
-          <div className="inline-flex items-center gap-1 md:gap-3 px-3 md:px-6 py-1.5 md:py-4 bg-gradient-to-r from-pink-100 to-pink-50 dark:from-pink-900/30 dark:to-pink-800/20 rounded-full text-pink-700 dark:text-pink-300 font-medium border border-pink-200/60 dark:border-pink-800/60 shadow-lg">
+          <div className="inline-flex items-center gap-1 md:gap-3 px-3 md:px-6 py-1.5 md:py-4 bg-gradient-to-r from-pink-900/30 to-pink-800/20 rounded-full text-pink-300 font-medium border border-pink-800/60 shadow-lg">
             <motion.span
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}

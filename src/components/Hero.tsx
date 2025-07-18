@@ -158,7 +158,7 @@ export default function Hero() {
               <div className="flex justify-center sm:justify-start">
                 <FloatingDock
                   items={socialLinks}
-                  desktopClassName="bg-white backdrop-blur-lg border border-[#fa0f69]/20"
+                  desktopClassName=" backdrop-blur-lg border border-[#fa0f69]/20"
                   mobileClassName="translate-y-0"
                 />
               </div>
