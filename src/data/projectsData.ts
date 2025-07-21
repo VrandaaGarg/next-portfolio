@@ -13,8 +13,7 @@ export const projectsData: Project[] = [
   {
     id: "1",
     name: "ResuMate",
-    image:
-      "https://res.cloudinary.com/dyetf2h9n/image/upload/q_60/v1752831819/resumate_n3e4wo.png", // Using placeholder image
+    image: "https://resumate.vrandagarg.in/banner.png", // Using placeholder image
     icon: "📄",
     description:
       "ResuMate is an AI-powered platform for building professional, ATS-friendly resumes with live editing, smart formatting, and real-time feedback.",
@@ -26,7 +25,7 @@ export const projectsData: Project[] = [
       "Firebase",
       "Appwrite",
     ],
-    liveDemoUrl: "https://resumate.vrandagarg.me/",
+    liveDemoUrl: "https://resumate.vrandagarg.in/",
     githubUrl: "https://github.com/VrandaaGarg/ResuMate",
   },
   {
