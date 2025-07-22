@@ -6,7 +6,7 @@ import ProjectCard from "@/components/ui/ProjectCard";
 
 export default function Projects() {
   return (
-    <main className="min-h-screen py-28 px-4 bg-[#0a0a0a]/40">
+    <main className="min-h-screen py-28 px-4 ">
       <div className="max-w-6xl mx-auto">
         {/* Page Header */}
         <motion.div

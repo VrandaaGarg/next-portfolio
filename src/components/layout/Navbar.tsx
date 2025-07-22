@@ -140,7 +140,10 @@ export default function Navbar() {
 
             <motion.button
               onClick={() => {
-                window.open("https://vrandagarg.in/VrandaResume.pdf", "_blank");
+                window.open(
+                  "https://vrandagarg.in/VrandaGargResume.pdf",
+                  "_blank"
+                );
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -246,7 +249,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     window.open(
-                      "https://vrandagarg.in/VrandaResume.pdf",
+                      "https://vrandagarg.in/VrandaGargResume.pdf",
                       "_blank"
                     );
                   }}
