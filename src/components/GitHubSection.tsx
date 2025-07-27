@@ -200,34 +200,180 @@ export default function GitHubSection() {
 
   if (isLoading) {
     return (
-      <section className="min-h-screen bg-[#0a0a0a]/40 relative overflow-hidden py-10 px-4">
-        <div className="container mx-auto max-w-7xl">
+      <section className="min-h-screen relative overflow-hidden py-10 px-4">
+        <div className="relative z-10 container mx-auto max-w-7xl">
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="flex justify-center items-center py-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="flex flex-col justify-center items-center min-h-[60vh] py-20"
           >
+            {/* Main Loading Container */}
             <motion.div
-              animate={{
-                rotate: 360,
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-                scale: { duration: 1.5, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="w-16 h-16 mx-auto mb-4"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative"
             >
-              <Github className="w-full h-full text-[#fa0f69]" />
+              {/* Glass Effect Container */}
+              <div className="relative  md:p-16">
+                {/* Content */}
+                <div className="relative z-10 text-center">
+                  {/* Section Header */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-7 md:mb-16"
+                  >
+                    <motion.h2
+                      className="text-4xl md:text-5xl font-bold text-white mb-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                    >
+                      Coding{" "}
+                      <span className="text-gradient-primary">Stats</span>
+                      <motion.span
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="inline-block ml-4"
+                      >
+                        <ChevronsLeftRight className="inline-block md:h-12 md:w-12 h-8 w-8 text-[#fa0f69]" />
+                      </motion.span>
+                    </motion.h2>
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                      className="text-sm md:text-xl text-neutral-400 max-w-3xl mx-auto"
+                    >
+                      Explore my coding journey, contributions, and the projects
+                      that define my development path
+                    </motion.p>
+
+                    <p className="text-sm md:text-xl text-[var(--text-secondary)] max-w-md mx-auto">
+                      Fetching your coding journey and contribution data...
+                    </p>
+                  </motion.div>
+
+                  {/* Progress Indicators */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.6 }}
+                    className="space-y-6"
+                  >
+                    {/* Progress Steps */}
+                    <div className="flex flex-col gap-4 max-w-md mx-auto">
+                      {[
+                        { text: "Fetching user profile data", icon: "👤" },
+                        { text: "Loading contribution history", icon: "📊" },
+                        { text: "Calculating statistics", icon: "📈" },
+                      ].map((step, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.8 + index * 0.2 }}
+                          className="flex items-center gap-3 p-3 rounded-lg bg-[var(--card-bg)]/30 border border-[var(--border-color)]/30"
+                        >
+                          <motion.div
+                            animate={{
+                              scale: [1, 1.2, 1],
+                              opacity: [0.7, 1, 0.7],
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              delay: index * 0.3,
+                            }}
+                            className="text-lg"
+                          >
+                            {step.icon}
+                          </motion.div>
+                          <span className="text-sm md:text-base text-[var(--text-secondary)]">
+                            {step.text}
+                          </span>
+                          <motion.div
+                            className="ml-auto"
+                            animate={{
+                              opacity: [0, 1, 0],
+                            }}
+                            transition={{
+                              duration: 1,
+                              repeat: Infinity,
+                              delay: index * 0.3,
+                            }}
+                          >
+                            <Loader2 className="w-4 h-4 text-[var(--primary-pink)] animate-spin" />
+                          </motion.div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Animated Progress Bar */}
+                    <motion.div
+                      initial={{ opacity: 0, scaleX: 0 }}
+                      animate={{ opacity: 1, scaleX: 1 }}
+                      transition={{ delay: 1.6, duration: 0.8 }}
+                      className="w-full max-w-md mx-auto"
+                    >
+                      <div className="w-full bg-[var(--card-bg)]/50 rounded-full h-2 border border-[var(--border-color)]/30 overflow-hidden">
+                        <motion.div
+                          className="h-full bg-gradient-to-r from-[var(--primary-pink)] to-[var(--secondary-pink)] rounded-full"
+                          initial={{ width: "0%" }}
+                          animate={{ width: "100%" }}
+                          transition={{
+                            duration: 3,
+                            ease: "easeInOut",
+                            delay: 1.8,
+                          }}
+                        />
+                      </div>
+                      <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 2.2 }}
+                        className="text-xs text-[var(--text-muted)] mt-2 text-center"
+                      >
+                        This may take a few moments...
+                      </motion.p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Floating Elements */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    {/* Code Symbols */}
+                    {Array.from({ length: 8 }).map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute text-[var(--primary-pink)]/20 text-lg md:text-xl"
+                        initial={{
+                          x: Math.random() * 300 - 150,
+                          y: Math.random() * 200 - 100,
+                          opacity: 0,
+                        }}
+                        animate={{
+                          y: [0, -20, 0],
+                          opacity: [0, 0.5, 0],
+                        }}
+                        transition={{
+                          duration: 3 + Math.random() * 2,
+                          repeat: Infinity,
+                          delay: Math.random() * 2,
+                        }}
+                      >
+                        {["{", "}", "<", ">", "/", "=", "(", ")"][i]}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </motion.div>
-            <motion.p
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="text-xl text-neutral-300 ml-4"
-            >
-              <Loader2 className="w-4 h-4 animate-spin" />
-              Loading GitHub data...
-            </motion.p>
           </motion.div>
         </div>
       </section>
@@ -266,7 +412,7 @@ export default function GitHubSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="text-lg md:text-xl text-neutral-400 max-w-3xl mx-auto"
+            className="text-sm md:text-xl text-neutral-400 max-w-3xl mx-auto"
           >
             Explore my coding journey, contributions, and the projects that
             define my development path
