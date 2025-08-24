@@ -106,17 +106,28 @@ export default function ContactForm({ className }: ContactFormProps) {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("https://formspree.io/f/mvgkovyl", {
+      // Create FormData object for Web3Forms
+      const formDataToSend = new FormData();
+      formDataToSend.append(
+        "access_key",
+        "e138b10a-f643-4087-b244-0d0e83476ea5"
+      );
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("message", formData.message);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formDataToSend,
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         setIsSubmitted(true);
         setFormData({ name: "", email: "", message: "" });
+      } else {
+        console.error("Form submission failed:", result.message);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
