@@ -33,7 +33,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
   return (
     <motion.div
       className={cn(
-        "group relative md:h-[500px] h-[410px] w-[350px] overflow-hidden rounded-2xl p-0 md:w-[700px]",
+        "group relative md:h-[460px] h-[410px] w-[350px] overflow-hidden rounded-2xl p-0 md:w-[500px]",
         "border   backdrop-blur-sm hover:cursor-pointer",
         "border-pink-800/60 bg-neutral-950/50",
         "shadow-sm transition-shadow duration-300 hover:shadow-lg",
