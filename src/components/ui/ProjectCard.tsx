@@ -3,7 +3,7 @@
 import type * as React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { LuArrowUpRight, LuGithub, LuExternalLink, LuX } from "react-icons/lu";
 import { Project } from "@/data/projectsData";
@@ -14,21 +14,46 @@ interface ProjectCardProps {
   className?: string;
 }
 
+// Animation variants for better performance
+const slideUpVariants = {
+  hidden: { y: "100%" },
+  visible: { y: 0 },
+  collapsed: { y: "calc(100% - 48px)" }
+};
+
+const cardVariants = {
+  hidden: { y: 40, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
+
 const ProjectCard = ({ project, className }: ProjectCardProps) => {
   const [isHovered, setHovered] = useState(false);
   const [isMobileExpanded, setIsMobileExpanded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+  const checkMobile = useCallback(() => {
+    setIsMobile(window.innerWidth < 768);
+  }, []);
 
+  const handleMouseEnter = useCallback(() => {
+    if (!isMobile) setHovered(true);
+  }, [isMobile]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (!isMobile) setHovered(false);
+  }, [isMobile]);
+
+  const toggleMobileExpanded = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsMobileExpanded(prev => !prev);
+  }, []);
+
+  useEffect(() => {
     checkMobile();
     window.addEventListener("resize", checkMobile);
 
     return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  }, [checkMobile]);
 
   return (
     <motion.div
@@ -39,11 +64,20 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
         "shadow-sm transition-shadow duration-300 hover:shadow-lg",
         className
       )}
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      whileHover={{ scale: 1.02 }}
-      onMouseEnter={() => !isMobile && setHovered(true)}
-      onMouseLeave={() => !isMobile && setHovered(false)}
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      transition={{ 
+        duration: 0.8, 
+        ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+        delay: 0.1 
+      }}
+      whileHover={{ 
+        scale: 1.02,
+        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* First Animated Border Beam - Purple to Blue */}
       <BorderBeam
@@ -97,7 +131,11 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               width={500}
               height={500}
               layoutId={`project-image-${project.id}`}
-              transition={{ duration: 0.3, ease: "circIn" }}
+              transition={{ 
+                duration: 0.6, 
+                ease: [0.25, 0.46, 0.45, 0.94], // smooth easeOutQuart
+                type: "tween"
+              }}
             />
 
             <motion.div
@@ -108,7 +146,11 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                 scale: 1,
                 filter: "blur(0px)",
               }}
-              transition={{ delay: 0.35, duration: 0.15, ease: "circIn" }}
+              transition={{ 
+                delay: 0.4, 
+                duration: 0.3, 
+                ease: [0.25, 0.46, 0.45, 0.94] 
+              }}
             />
           </>
         )}
@@ -124,7 +166,11 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               width={500}
               height={500}
               layoutId={`project-image-${project.id}`}
-              transition={{ duration: 0.3, ease: "circIn" }}
+              transition={{ 
+                duration: 0.6, 
+                ease: [0.25, 0.46, 0.45, 0.94], // smooth easeOutQuart
+                type: "tween"
+              }}
             />
           </>
         )}
@@ -132,26 +178,28 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
 
       <motion.div
         className="absolute bottom-2 left-2 right-2 rounded-t-2xl border-t   px-3.5 md:px-6 pb-3 md:pb-5 pt-3 backdrop-blur-sm border-pink-800/80 bg-neutral-950/95 z-30"
-        initial={{ y: "100%" }}
-        animate={{
-          y: isMobile
+        variants={slideUpVariants}
+        initial="hidden"
+        animate={
+          isMobile
             ? isMobileExpanded
-              ? 0
-              : "calc(100% - 48px)"
+              ? "visible"
+              : "collapsed"
             : isHovered
-            ? 0
-            : "calc(100% - 48px)",
+            ? "visible"
+            : "collapsed"
+        }
+        transition={{ 
+          duration: 0.6, 
+          ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
+          type: "tween"
         }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         <div className="text-neutral-100">
           <div className="mb-1.5 md:mb-2 flex items-center justify-between text-md font-semibold text-neutral-100">
             <span>Project Details</span>
             <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsMobileExpanded(!isMobileExpanded);
-              }}
+              onClick={toggleMobileExpanded}
               className="md:pointer-events-none p-1 rounded-md hover:bg-neutral-800 transition-colors duration-200"
             >
               {/* Show close button on small screens when expanded, arrow otherwise */}

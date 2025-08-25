@@ -51,7 +51,7 @@ export default function Projects() {
         </div>
 
         {/* See All Button */}
-        <div className="flex w-full justify-end">
+        <div className="flex w-full justify-center">
           <motion.button
             initial={{ opacity: 0, y: 20 }}
             onClick={() => {
