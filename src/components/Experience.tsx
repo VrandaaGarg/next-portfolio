@@ -206,7 +206,9 @@ const ExperienceCard = memo(
                   <motion.img
                     src={exp.logo}
                     alt={`${exp.company} logo`}
-                    className="w-full h-full object-cover rounded-lg cursor-pointer"
+                    className={`w-full h-full object-cover rounded-lg ${
+                      exp.type === "achievement" ? "cursor-pointer" : ""
+                    }`}
                     whileHover={{
                       scale: 1.1,
                       transition: {
@@ -214,17 +216,21 @@ const ExperienceCard = memo(
                         ease: [0.25, 0.46, 0.45, 0.94],
                       },
                     }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setShowImagePopup(true)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => {
+                    whileTap={exp.type === "achievement" ? { scale: 0.95 } : {}}
+                    onClick={exp.type === "achievement" ? () => setShowImagePopup(true) : undefined}
+                    role={exp.type === "achievement" ? "button" : undefined}
+                    tabIndex={exp.type === "achievement" ? 0 : undefined}
+                    onKeyDown={exp.type === "achievement" ? (e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
                         setShowImagePopup(true);
                       }
-                    }}
-                    aria-label={`View enlarged ${exp.company} logo`}
+                    } : undefined}
+                    aria-label={
+                      exp.type === "achievement" 
+                        ? `View enlarged ${exp.company} logo` 
+                        : `${exp.company} logo`
+                    }
                   />
                 </div>
 
@@ -306,13 +312,15 @@ const ExperienceCard = memo(
           {exp.duration}
         </motion.div>
 
-        {/* Image Popup */}
-        <ImagePopup
-          src={exp.logo}
-          alt={`${exp.company} logo`}
-          isOpen={showImagePopup}
-          onClose={() => setShowImagePopup(false)}
-        />
+        {/* Image Popup - Only for achievements */}
+        {exp.type === "achievement" && (
+          <ImagePopup
+            src={exp.logo}
+            alt={`${exp.company} logo`}
+            isOpen={showImagePopup}
+            onClose={() => setShowImagePopup(false)}
+          />
+        )}
       </div>
     );
   }
