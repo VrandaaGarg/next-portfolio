@@ -44,14 +44,14 @@ export default function Navbar() {
       }}
     >
       <motion.div
-        className={`bg-[#280512]/20 rounded-full border backdrop-blur-xl ${
+        className={`bg-[#280512]/20 rounded-2xl border backdrop-blur-xl ${
           isScrolled
             ? "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/15 border-r-[var(--primary-pink)]/15 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10"
             : "border-t-2 border-r-2 border-b-2 border-l-2 border-t-[var(--primary-pink)]/10 border-r-[var(--primary-pink)]/10 border-b-zinc-600/25 border-l-zinc-600/25 shadow-xl shadow-pink-900/10"
         }`}
         initial={{
           width: "95vw",
-          maxWidth: "1200px",
+          maxWidth: "1100px",
           paddingLeft: "1rem",
           paddingRight: "1rem",
           paddingTop: "0.2rem",
@@ -59,7 +59,7 @@ export default function Navbar() {
         }}
         animate={{
           width: isScrolled ? "90vw" : "95vw",
-          maxWidth: isScrolled ? "900px" : "1200px",
+          maxWidth: isScrolled ? "900px" : "1100px",
           paddingLeft: isScrolled ? "0.5rem" : "1rem",
           paddingRight: isScrolled ? "0.5rem" : "1rem",
           paddingTop: isScrolled ? "0.05rem" : "0.2rem",
