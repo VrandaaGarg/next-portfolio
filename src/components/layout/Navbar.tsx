@@ -116,7 +116,7 @@ export default function Navbar() {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <IconComponent className=" text-lg md:text-xl" />
+                      <IconComponent className=" text-lg md:text-md" />
                     </motion.div>
                     <span className="text-lg">{item.name}</span>
 
@@ -125,7 +125,7 @@ export default function Navbar() {
                       whileHover={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <ExternalLink size={12} />
+                      <ExternalLink size={10} />
                     </motion.div>
                     <motion.div
                       className="absolute -bottom-1 left-0 h-0.5 bg-gradient-primary"
@@ -152,7 +152,7 @@ export default function Navbar() {
                 delay: 0.7,
                 ease: "easeOut",
               }}
-              className="bg-gradient-to-br hover:shadow-lg hover:shadow-[#fa0f69]/25 transition-all duration-300 cursor-pointer flex gap-2 items-center justify-center text-lg from-[#c11853] to-[#d44575] hover:from-[#ef2b6c] hover:to-[#810832] text-white  md:px-6 py-1.5 rounded-4xl"
+              className="bg-gradient-to-br transition-all duration-300 cursor-pointer flex gap-2 items-center justify-center text-lg from-[#c11853] to-[#d44575] hover:from-[#ef2b6c] hover:to-[#810832] text-white  md:px-6 py-1.5 rounded-xl"
             >
               <span> Resume</span>{" "}
               <Newspaper size={18} className="hover:rotate-12 duration-300" />

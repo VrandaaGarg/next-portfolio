@@ -15,6 +15,20 @@ export interface Experience {
 export const experienceData: Experience[] = [
   {
     id: "1",
+    name: "Kakiyo OÜ",
+    role: "Frontend Developer",
+    company: "",
+    duration: "Aug 2025 - Sept 2025",
+    description:
+      "Implemented and optimized a responsive, user-friendly website using Next.js, Tailwind CSS, TypeScript, and Framer Motion by enhancing user engagement through micro-interactive components for better website understanding.",
+    technologies: ["Next JS", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    logo: "https://res.cloudinary.com/dyetf2h9n/image/upload/v1757182382/logo_etjtoe.png",
+    left: false,
+    type: "experience",
+    iconType: "code",
+  },
+  {
+    id: "2",
     name: "Hackerzstreet 3.0",
     role: "Co-Lead",
     company: "IEEE CS MUJ",
@@ -35,7 +49,7 @@ export const experienceData: Experience[] = [
     iconType: "trophy",
   },
   {
-    id: "2",
+    id: "3",
     name: "Webmaster",
     role: "Frontend Lead",
     company: "Randomize",
@@ -43,13 +57,13 @@ export const experienceData: Experience[] = [
     description:
       "As Webmaster at Randomize, I lead frontend workshops and manage the club website, keeping our community's online presence seamless and up to date.",
     technologies: ["React", "Tailwind CSS", "Javascript", "Github"],
-    logo: "https://vrandagarg.in/randomize.png",
+    logo: "https://res.cloudinary.com/dyetf2h9n/image/upload/v1752582422/randomize_utehct.png",
     left: false,
     type: "experience",
     iconType: "code",
   },
   {
-    id: "3",
+    id: "4",
     name: "BrandIT ",
     role: "3rd Position",
     company: "IEEE WIE MUJ",

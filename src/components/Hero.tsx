@@ -179,7 +179,7 @@ export default function Hero() {
               {/* Image container */}
               <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] overflow-hidden ">
                 <Image
-                  src="/me.png"
+                  src="https://res.cloudinary.com/dyetf2h9n/image/upload/v1752582426/me_ggujd3.png"
                   alt="Vranda Garg"
                   fill
                   className="object-cover object-center"

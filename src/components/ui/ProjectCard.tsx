@@ -7,7 +7,6 @@ import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { LuArrowUpRight, LuGithub, LuExternalLink, LuX } from "react-icons/lu";
 import { Project } from "@/data/projectsData";
-import { BorderBeam } from "./animated-border-beam";
 
 interface ProjectCardProps {
   project: Project;
@@ -18,12 +17,12 @@ interface ProjectCardProps {
 const slideUpVariants = {
   hidden: { y: "100%" },
   visible: { y: 0 },
-  collapsed: { y: "calc(100% - 48px)" }
+  collapsed: { y: "calc(100% - 48px)" },
 };
 
 const cardVariants = {
   hidden: { y: 40, opacity: 0 },
-  visible: { y: 0, opacity: 1 }
+  visible: { y: 0, opacity: 1 },
 };
 
 const ProjectCard = ({ project, className }: ProjectCardProps) => {
@@ -45,7 +44,7 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
 
   const toggleMobileExpanded = useCallback((e: React.MouseEvent) => {
     e.stopPropagation();
-    setIsMobileExpanded(prev => !prev);
+    setIsMobileExpanded((prev) => !prev);
   }, []);
 
   useEffect(() => {
@@ -67,46 +66,18 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
       variants={cardVariants}
       initial="hidden"
       animate="visible"
-      transition={{ 
-        duration: 0.8, 
+      transition={{
+        duration: 0.8,
         ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-        delay: 0.1 
+        delay: 0.1,
       }}
-      whileHover={{ 
+      whileHover={{
         scale: 1.02,
-        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
       }}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* First Animated Border Beam - Purple to Blue */}
-      <BorderBeam
-        size={160}
-        duration={12}
-        colorFrom="#ff4081"
-        colorTo="#ffb3d1"
-        borderWidth={3}
-        className={cn(
-          "transition-opacity duration-300 z-50",
-          isHovered ? "opacity-90" : "opacity-60"
-        )}
-      />
-
-      {/* Second Animated Border Beam - Pink to Purple (opposite direction) */}
-      <BorderBeam
-        size={160}
-        duration={8}
-        colorFrom="#ffb3d1"
-        colorTo="#ff4081"
-        borderWidth={3}
-        reverse={false}
-        delay={2}
-        className={cn(
-          "transition-opacity duration-300 z-50",
-          isHovered ? "opacity-80" : "opacity-60"
-        )}
-      />
-
       <div className="relative mb-2 p-6 pb-4 z-10">
         <div className="flex items-start justify-between">
           <div className="flex-1">
@@ -131,10 +102,10 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               width={500}
               height={500}
               layoutId={`project-image-${project.id}`}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 ease: [0.25, 0.46, 0.45, 0.94], // smooth easeOutQuart
-                type: "tween"
+                type: "tween",
               }}
             />
 
@@ -146,10 +117,10 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
                 scale: 1,
                 filter: "blur(0px)",
               }}
-              transition={{ 
-                delay: 0.4, 
-                duration: 0.3, 
-                ease: [0.25, 0.46, 0.45, 0.94] 
+              transition={{
+                delay: 0.4,
+                duration: 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94],
               }}
             />
           </>
@@ -166,10 +137,10 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
               width={500}
               height={500}
               layoutId={`project-image-${project.id}`}
-              transition={{ 
-                duration: 0.6, 
+              transition={{
+                duration: 0.6,
                 ease: [0.25, 0.46, 0.45, 0.94], // smooth easeOutQuart
-                type: "tween"
+                type: "tween",
               }}
             />
           </>
@@ -189,10 +160,10 @@ const ProjectCard = ({ project, className }: ProjectCardProps) => {
             ? "visible"
             : "collapsed"
         }
-        transition={{ 
-          duration: 0.6, 
+        transition={{
+          duration: 0.6,
           ease: [0.25, 0.46, 0.45, 0.94] as [number, number, number, number],
-          type: "tween"
+          type: "tween",
         }}
       >
         <div className="text-neutral-100">

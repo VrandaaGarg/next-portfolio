@@ -7,6 +7,7 @@ import { LuCodeXml, LuBuilding, LuUser, LuX } from "react-icons/lu";
 import { ShineBorder } from "./ui/shine-border";
 import { useState, useCallback, useEffect, memo } from "react";
 import { experienceData, Experience } from "@/data/experienceData";
+import Image from "next/image";
 
 // Image popup component
 const ImagePopup = ({
@@ -81,9 +82,11 @@ const ImagePopup = ({
             >
               <LuX className="w-6 h-6" />
             </button>
-            <img
+            <Image
               src={src}
               alt={alt}
+              width={800}
+              height={600}
               className="w-full h-auto rounded-2xl shadow-2xl border-2 border-pink-400/30"
               id="image-popup-title"
             />
@@ -94,237 +97,238 @@ const ImagePopup = ({
   );
 };
 
-const ExperienceCard = memo(
-  ({ exp, index }: { exp: Experience; index: number }) => {
-    const [isHovered, setIsHovered] = useState(false);
-    const [showImagePopup, setShowImagePopup] = useState(false);
+const ExperienceCard = memo(({ exp }: { exp: Experience }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [showImagePopup, setShowImagePopup] = useState(false);
 
-    const getTypeColor = (type: string) => {
-      switch (type) {
-        case "achievement":
-          return "from-pink-500 to-rose-500";
-        case "experience":
-          return "from-pink-400 to-pink-600";
-        case "education":
-          return "from-pink-300 to-pink-500";
-        default:
-          return "from-pink-400 to-pink-600";
-      }
-    };
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case "achievement":
+        return "from-pink-500 to-rose-500";
+      case "experience":
+        return "from-pink-400 to-pink-600";
+      case "education":
+        return "from-pink-300 to-pink-500";
+      default:
+        return "from-pink-400 to-pink-600";
+    }
+  };
 
-    const getIcon = (iconType: string) => {
-      switch (iconType) {
-        case "trophy":
-          return <FaTrophy className="text-pink-400" />;
-        case "medal":
-          return <FaMedal className="text-pink-400" />;
-        case "code":
-          return <LuCodeXml className="text-pink-400" />;
-        case "academic":
-          return <HiAcademicCap className="text-pink-400" />;
-        default:
-          return <FaAward className="text-pink-400" />;
-      }
-    };
+  const getIcon = (iconType: string) => {
+    switch (iconType) {
+      case "trophy":
+        return <FaTrophy className="text-pink-400" />;
+      case "medal":
+        return <FaMedal className="text-pink-400" />;
+      case "code":
+        return <LuCodeXml className="text-pink-400" />;
+      case "academic":
+        return <HiAcademicCap className="text-pink-400" />;
+      default:
+        return <FaAward className="text-pink-400" />;
+    }
+  };
 
-    return (
-      <div className="mb-20 md:mb-28 relative">
-        {/* Timeline node/circle */}
-        <motion.div
-          initial={{ scale: 0, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{
-            duration: 0.6,
-            delay: index * 0.1,
-            ease: [0.25, 0.46, 0.45, 0.94],
-          }}
-          viewport={{ once: true, margin: "-150px", amount: 0.3 }}
-          className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r ${getTypeColor(
-            exp.type
-          )} z-10 shadow-lg shadow-pink-400/30 flex items-center justify-center`}
-        >
-          <div className="text-white text-sm">{getIcon(exp.iconType)}</div>
-        </motion.div>
+  return (
+    <div className="mb-20 md:mb-28 relative">
+      {/* Timeline node/circle */}
+      <motion.div
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        transition={{
+          duration: 0.6,
+        }}
+        viewport={{ once: true, margin: "-150px", amount: 0.3 }}
+        className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r ${getTypeColor(
+          exp.type
+        )} z-10 shadow-lg shadow-pink-400/30 flex items-center justify-center`}
+      >
+        <div className="text-white text-sm">{getIcon(exp.iconType)}</div>
+      </motion.div>
 
-        {/* Animated pulse around the circle */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{
-            scale: [0.8, 2.5, 0.8],
-            opacity: [0.6, 0, 0.6],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: [0.25, 0.46, 0.45, 0.94],
-            delay: index * 0.3,
-            repeatDelay: 1,
-          }}
-          className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-pink-400/25 z-0"
-        />
+      {/* Animated pulse around the circle */}
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: [0.8, 2.5, 0.8],
+          opacity: [0.6, 0, 0.6],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-pink-400/25 z-0"
+      />
 
-        {/* Content card */}
+      {/* Content card */}
+      <div
+        className={`flex w-full ${exp.left ? "justify-end" : "justify-start"}`}
+      >
         <div
-          className={`flex w-full ${
-            exp.left ? "justify-end" : "justify-start"
+          className={`w-full md:w-5/12 ${
+            exp.left ? "md:pr-8 lg:pr-16" : "md:pl-8 lg:pl-16"
           }`}
         >
-          <div
-            className={`w-full md:w-5/12 ${
-              exp.left ? "md:pr-8 lg:pr-16" : "md:pl-8 lg:pl-16"
-            }`}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1, x: 0, y: 0 }}
+            viewport={{ once: true, margin: "-120px", amount: 0.2 }}
+            transition={{
+              duration: 0.8,
+            }}
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.3 },
+            }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="relative backdrop-blur-sm bg-neutral-950/50 border border-pink-800/60 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
           >
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1, x: 0, y: 0 }}
-              viewport={{ once: true, margin: "-120px", amount: 0.2 }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.05,
-              }}
-              whileHover={{
-                scale: 1.02,
-                transition: { duration: 0.3 },
-              }}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-              className="relative backdrop-blur-sm bg-neutral-950/50 border border-pink-800/60 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
-            >
-              {/* Animated Shine Border */}
-              <ShineBorder
-                borderWidth={2}
-                duration={8}
-                shineColor={["#ff4081", "#ffb3d1", "#ff4081"]}
-                className={`transition-opacity duration-300 ${
-                  isHovered ? "opacity-90" : "opacity-50"
-                }`}
-              />
+            {/* Animated Shine Border */}
+            <ShineBorder
+              borderWidth={2}
+              duration={8}
+              shineColor={["#ff4081", "#ffb3d1", "#ff4081"]}
+              className={`transition-opacity duration-300 ${
+                isHovered ? "opacity-90" : "opacity-50"
+              }`}
+            />
 
-              <div className="flex flex-col md:flex-row items-start gap-4">
-                {/* Logo */}
-                <div className="w-20 h-20 mx-auto md:mx-0 rounded-xl overflow-hidden flex-shrink-0 bg-pink-900/30 p-3 border border-pink-800/40">
-                  <motion.img
+            <div className="flex flex-col md:flex-row items-start gap-4">
+              {/* Logo */}
+              <div className="w-20 h-20 mx-auto md:mx-0 rounded-xl overflow-hidden flex-shrink-0 bg-pink-900/30 p-3 border border-pink-800/40">
+                <motion.div
+                  className={`w-full h-full rounded-lg overflow-hidden ${
+                    exp.type === "achievement" ? "cursor-pointer" : ""
+                  }`}
+                  whileHover={{
+                    scale: 1.1,
+                    transition: {
+                      duration: 0.3,
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                    },
+                  }}
+                  whileTap={exp.type === "achievement" ? { scale: 0.95 } : {}}
+                  onClick={
+                    exp.type === "achievement"
+                      ? () => setShowImagePopup(true)
+                      : undefined
+                  }
+                  role={exp.type === "achievement" ? "button" : undefined}
+                  tabIndex={exp.type === "achievement" ? 0 : undefined}
+                  onKeyDown={
+                    exp.type === "achievement"
+                      ? (e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            setShowImagePopup(true);
+                          }
+                        }
+                      : undefined
+                  }
+                  aria-label={
+                    exp.type === "achievement"
+                      ? `View enlarged ${exp.company} logo`
+                      : `${exp.company} logo`
+                  }
+                >
+                  <Image
                     src={exp.logo}
                     alt={`${exp.company} logo`}
-                    className={`w-full h-full object-cover rounded-lg ${
-                      exp.type === "achievement" ? "cursor-pointer" : ""
-                    }`}
-                    whileHover={{
-                      scale: 1.1,
-                      transition: {
-                        duration: 0.3,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                      },
-                    }}
-                    whileTap={exp.type === "achievement" ? { scale: 0.95 } : {}}
-                    onClick={exp.type === "achievement" ? () => setShowImagePopup(true) : undefined}
-                    role={exp.type === "achievement" ? "button" : undefined}
-                    tabIndex={exp.type === "achievement" ? 0 : undefined}
-                    onKeyDown={exp.type === "achievement" ? (e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setShowImagePopup(true);
-                      }
-                    } : undefined}
-                    aria-label={
-                      exp.type === "achievement" 
-                        ? `View enlarged ${exp.company} logo` 
-                        : `${exp.company} logo`
-                    }
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover"
                   />
-                </div>
+                </motion.div>
+              </div>
 
-                {/* Content */}
-                <div className="flex-1 text-center md:text-left">
-                  <motion.h3
-                    className="text-xl font-bold text-neutral-100 mb-2"
-                    initial={{ opacity: 0, y: 15 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-100px", amount: 0.5 }}
-                    transition={{
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      duration: 0.6,
-                      delay: index * 0.05 + 0.2,
-                    }}
-                  >
-                    {exp.name}
-                  </motion.h3>
+              {/* Content */}
+              <div className="flex-1 text-center md:text-left">
+                <motion.h3
+                  className="text-xl font-bold text-neutral-100 mb-2"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px", amount: 0.5 }}
+                  transition={{
+                    duration: 0.6,
+                  }}
+                >
+                  {exp.name}
+                </motion.h3>
 
-                  <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
-                    <div className="flex items-center gap-2 text-pink-400 justify-center md:justify-start">
-                      <LuUser className="w-4 h-4" />
-                      <span className="text-sm font-medium">{exp.role}</span>
-                    </div>
-                    {exp.company && (
-                      <div className="flex items-center gap-2 text-neutral-400 justify-center md:justify-start">
-                        <LuBuilding className="w-4 h-4" />
-                        <span className="text-sm">{exp.company}</span>
-                      </div>
-                    )}
+                <div className="flex flex-col md:flex-row md:items-center gap-2 mb-3">
+                  <div className="flex items-center gap-2 text-pink-400 justify-center md:justify-start">
+                    <LuUser className="w-4 h-4" />
+                    <span className="text-sm font-medium">{exp.role}</span>
                   </div>
-
-                  <p className="text-sm text-neutral-400 leading-relaxed mb-4">
-                    {exp.description}
-                  </p>
-
-                  {exp.technologies && exp.technologies.length > 0 && (
-                    <motion.div
-                      className="flex flex-wrap gap-2 justify-center md:justify-start"
-                      initial={{ opacity: 0, y: 10 }}
-                      viewport={{ once: true, margin: "-80px", amount: 0.3 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{
-                        delay: index * 0.05 + 0.4,
-                        duration: 0.5,
-                        ease: [0.25, 0.46, 0.45, 0.94],
-                      }}
-                    >
-                      {exp.technologies.map((tech: string, idx: number) => (
-                        <motion.span
-                          key={idx}
-                          className="px-3 py-1 text-xs rounded-full bg-pink-900/30 text-pink-300 border border-pink-800/40 font-medium"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {tech}
-                        </motion.span>
-                      ))}
-                    </motion.div>
+                  {exp.company && (
+                    <div className="flex items-center gap-2 text-neutral-400 justify-center md:justify-start">
+                      <LuBuilding className="w-4 h-4" />
+                      <span className="text-sm">{exp.company}</span>
+                    </div>
                   )}
                 </div>
+
+                <p className="text-sm text-neutral-400 leading-relaxed mb-4">
+                  {exp.description}
+                </p>
+
+                {exp.technologies && exp.technologies.length > 0 && (
+                  <motion.div
+                    className="flex flex-wrap gap-2 justify-center md:justify-start"
+                    initial={{ opacity: 0, y: 10 }}
+                    viewport={{ once: true, margin: "-80px", amount: 0.3 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    {exp.technologies.map((tech: string, idx: number) => (
+                      <motion.span
+                        key={idx}
+                        className="px-3 py-1 text-xs rounded-full bg-pink-900/30 text-pink-300 border border-pink-800/40 font-medium"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </motion.div>
+                )}
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
-
-        {/* Floating date indicator */}
-        <motion.div
-          initial={{ opacity: 0, y: 30, scale: 0.8 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
-          viewport={{ once: true, margin: "-100px", amount: 0.5 }}
-          transition={{
-            duration: 0.6,
-            delay: index * 0.05 + 0.1,
-            ease: [0.25, 0.46, 0.45, 0.94],
-          }}
-          className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-pink-900/30 backdrop-blur-sm border border-pink-800/60 text-pink-300 px-4 py-2 rounded-full text-xs font-medium shadow-lg z-20"
-        >
-          {exp.duration}
-        </motion.div>
-
-        {/* Image Popup - Only for achievements */}
-        {exp.type === "achievement" && (
-          <ImagePopup
-            src={exp.logo}
-            alt={`${exp.company} logo`}
-            isOpen={showImagePopup}
-            onClose={() => setShowImagePopup(false)}
-          />
-        )}
       </div>
-    );
-  }
-);
+
+      {/* Floating date indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 30, scale: 0.8 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-100px", amount: 0.5 }}
+        transition={{
+          duration: 0.6,
+          ease: "easeInOut",
+        }}
+        className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-pink-900/30 backdrop-blur-sm border border-pink-800/60 text-pink-300 px-4 py-2 rounded-full text-xs font-medium shadow-lg z-20"
+      >
+        {exp.duration}
+      </motion.div>
+
+      {/* Image Popup - Only for achievements */}
+      {exp.type === "achievement" && (
+        <ImagePopup
+          src={exp.logo}
+          alt={`${exp.company} logo`}
+          isOpen={showImagePopup}
+          onClose={() => setShowImagePopup(false)}
+        />
+      )}
+    </div>
+  );
+});
 
 ExperienceCard.displayName = "ExperienceCard";
 
@@ -339,7 +343,7 @@ export default function ExperienceTimeline() {
           viewport={{ once: true, margin: "-50px", amount: 0.3 }}
           transition={{
             duration: 0.8,
-            ease: [0.25, 0.46, 0.45, 0.94],
+            ease: "easeInOut",
           }}
           className="text-center mb-16 relative z-10"
         >
@@ -366,7 +370,7 @@ export default function ExperienceTimeline() {
           {/* Experience Cards */}
           <div className="relative">
             {experienceData.map((exp, index) => (
-              <ExperienceCard key={exp.id || index} exp={exp} index={index} />
+              <ExperienceCard key={exp.id || index} exp={exp} />
             ))}
           </div>
         </div>
@@ -378,8 +382,8 @@ export default function ExperienceTimeline() {
           viewport={{ once: true, margin: "-50px", amount: 0.5 }}
           transition={{
             duration: 0.7,
-            delay: 0.2,
-            ease: [0.25, 0.46, 0.45, 0.94],
+
+            ease: "easeInOut",
           }}
           className="text-center md:mt-16 relative z-10"
         >
