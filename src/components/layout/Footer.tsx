@@ -41,7 +41,7 @@ export default function Footer() {
     {
       name: "Twitter",
       icon: RiTwitterXLine,
-      href: "https://twitter.com/vranda_garg_",
+      href: "https://twitter.com/vrandaagarg",
       color: "hover:text-[#fa0f69]",
     },
     {

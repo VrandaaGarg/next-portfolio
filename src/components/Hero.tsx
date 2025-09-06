@@ -27,7 +27,7 @@ export default function Hero() {
       icon: (
         <RiTwitterXLine className="h-full w-full text-neutral-300 hover:text-[#fa0f69] transition-colors" />
       ),
-      href: "https://x.com/vranda_garg_", // Replace with your actual Twitter
+      href: "https://x.com/vrandaagarg", // Replace with your actual Twitter
     },
     {
       title: "LinkedIn",
